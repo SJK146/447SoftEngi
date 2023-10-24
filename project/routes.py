@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import db, User, Study
-import yfinance as yf
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
@@ -16,7 +15,8 @@ def home():
 def register():
 	if request.method == "POST":
 		new_email = request.form.get("email")
-		if new_email == User.query.filter_by(email=request.form.get("email")).first().email:
+		row = User.query.filter_by(email=request.form.get("email")).first()
+		if row is not None and new_email == row.email:
 			flash("Email exists.  Please login")
 			return redirect(url_for("login"))
 		user = User(email=new_email,
