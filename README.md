@@ -1,6 +1,7 @@
 # 447SoftEngi
 
-Should just need python
+Should just need python to run back end
+all front end code is inside the project folder currently and has a seperate read me to run the program.
 
 	pip install fastapi unicorn 
 
