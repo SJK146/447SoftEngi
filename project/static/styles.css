@@ -1,23 +1,6 @@
-/*
--this file is to be used for styling of the project this may need to be split into multiple files to make it more
-managable but currently this will do
-
--also currently not working rn for some reason
-*/
-
-
-/*general formatting*/
-body{
-    padding-left: 20px; /*provides padding to all text in body*/
-    padding-right: 20px;
-}
-
-
-
-/*styling for the drop down menu in the add studies page*/
-/* Dropdown Button */
 .dropbtn {
-  background-color: #04AA6D;
+  background-color: #5d615f; /*color light grey*/
+  border-radius 10px; /*rounds borders*/
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -49,10 +32,15 @@ body{
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {background-color: #ddd;} /*currently light grey*/
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+/* Change the background color of the dropdown button when hovered over*/
+.dropdown:hover .dropbtn {background-color: #555e55;}
+
+body{
+  padding-left: 20px;
+  padding-right: 20px;
+}
