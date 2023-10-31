@@ -1,0 +1,21 @@
+.nav ul {
+  display:flex;
+  background-color: #ddd;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  padding-left: 0;
+
+}.nav li {
+    display: inline;
+  list-style-type: none;
+  border-style: solid;
+  border-color: darkgrey;
+  border-width: 1px;
+  padding: .2em;
+  margin: 0;
+}
+.nav a {
+  font-family: sans-serif;
+  text-decoration: none;
+  border-color: black;
+}
