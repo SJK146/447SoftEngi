@@ -1,12 +1,12 @@
-<nav>
+<div class="nav">
 	<ul>
 		{% if current_user.is_authenticated %}
-        <li><a href="/">Home</a></li>
-		<li><a href="/studies">Studies</a></li>
-		<li><a href="/logout">Logout</a></li>
+        <li><a href="/">home</a></li>
+		<li><a href="/studies">studies</a></li>
+		<li><a href="/logout">logout</a></li>
 		{% else %}
-		<li><a href="/login">Login</a></li>
-		<li><a href="/register">Create account</a></li>
+		<li><a href="/login">login</a></li>
+		<li><a href="/register">create account</a></li>
 		{% endif %}
 	</ul>
-</nav>
+</div>
