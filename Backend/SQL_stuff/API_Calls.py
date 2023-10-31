@@ -1,17 +1,21 @@
-https://www.alphavantage.co/    (5 API requests per minute and 100 requests per day.)
-    ALOT OF TESTS
-    SMA, EMA, WMA, DEMA, TEMA, MACDEXT, RSI.........
+URL	TEST		NEEDS	NEEDS	NEEDS	NEEDS
+https://www.marketaux.com/documentation	Sentiment analysis		Ticker			
+			
+https://www.alphavantage.co/query?function=CCI&symbol=IBM&interval=daily&time_period=10&apikey=demo	CCI		Ticker	Interval(60min, daily, weekly, monthly)	Time period(+int)	
+https://www.alphavantage.co/query?function=SMA&symbol=IBM&interval=weekly&time_period=10&series_type=open&apikey=demo	SMA		Ticker	Interval(60min, daily, weekly, monthly)	Time period(+int)	Series Type(close, open, high, low)
+https://www.alphavantage.co/query?function=EMA&symbol=IBM&interval=weekly&time_period=10&series_type=open&apikey=demo	EMA		Ticker	Interval(60min, daily, weekly, monthly)	Time period(+int)	Series Type(close, open, high, low)
+https://www.alphavantage.co/query?function=WMA&symbol=IBM&interval=weekly&time_period=10&series_type=open&apikey=demo	WMA		Ticker	Interval(60min, daily, weekly, monthly)	Time period(+int)	Series Type(close, open, high, low)
+https://www.alphavantage.co/query?function=DEMA&symbol=IBM&interval=weekly&time_period=10&series_type=open&apikey=demo	DEMA		Ticker	Interval(60min, daily, weekly, monthly)	Time period(+int)	Series Type(close, open, high, low)
+https://www.alphavantage.co/query?function=TEMA&symbol=IBM&interval=weekly&time_period=10&series_type=open&apikey=demo	TEMA		Ticker	Interval(60min, daily, weekly, monthly)	Time period(+int)	Series Type(close, open, high, low)
+https://www.alphavantage.co/query?function=MOM&symbol=IBM&interval=daily&time_period=10&series_type=close&apikey=demo	MOM		Ticker	Interval(60min, daily, weekly, monthly)	Time period(+int)	Series Type(close, open, high, low)
+https://www.alphavantage.co/query?function=OBV&symbol=IBM&interval=weekly&apikey=demo	OBV		Ticker	Interval(60min, daily, weekly, monthly)		
+https://www.alphavantage.co/query?function=STOCH&symbol=IBM&interval=daily&apikey=demo	STOCH		Ticker	Interval(60min, daily, weekly, monthly)		
+https://www.alphavantage.co/query?function=MACDEXT&symbol=IBM&interval=daily&series_type=open&apikey=demo	MACDEXT		Ticker	Interval(60min, daily, weekly, monthly)	Time period(+int)	
+https://www.alphavantage.co/query?function=RSI&symbol=IBM&interval=weekly&time_period=10&series_type=open&apikey=demo	RSI		Ticker	Interval(60min, daily, weekly, monthly)	Time period(+int)	Series Type(close, open, high, low)
+						
+https://api.polygon.io/v1/indicators/macd/AAPL?timespan=day&adjusted=true&short_window=12&long_window=26&signal_window=9&series_type=close&order=desc&apiKey=*	MACD		Ticker	Timespan(day, week, month, year)		
+https://finance.yahoo.com/quote/NVDA?p=NVDA	Anything on yahoo 		Ticker			
 
-https://polygon.io/docs/stocks/get_v1_indicators_sma__stockticker  (5 API Calls / Minute)
-    MISC pricing informaiton
-    SMA, EMA, MACD, RSI 
-
-Anything on (web scraping):
-https://finance.yahoo.com/quote/NVDA/key-statistics?p=NVDA
-    for example, EPS, PE, Open close, Ranges, avg volume
-
-Sentiment analysis (is it good bad or ugly)
-https://www.marketaux.com/documentation
 
 
 
