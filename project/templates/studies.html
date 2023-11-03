@@ -3,15 +3,18 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Studies</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 	{% include "nav.html" %}
 
-    <h1>Hello, {{ name }}. Stocks are cool.</h1>
+    <h1>Welcome back {{ name }}!</h1>
 	{% if not studies %}
-	<div>Your have no studies</div>
+	<div>You have no studies</div>
 	{% else %}
-	<div>Your studies: 
+
+	<div>
+		<div class = "table-header">Your tracked stocks:</div> <!--needs to be formatted better its whatever rn-->
 		{% for study in studies %}
 		<div>{{ study.ticker }}</div>
 		{% endfor %}

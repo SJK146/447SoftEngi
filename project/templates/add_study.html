@@ -13,11 +13,28 @@
 	{% include "nav.html" %}
 	
 	<h1>Create a new study</h1>
+
+	<!--this is used to take input from multiple text boxes-->
 	<form action="#" method="post">
-		<label for="ticker">Ticker</label>
+		<label>Ticker</label>
+		<input type="text" name="ticker" placeholder="ticker">
+  		<br><br>
+		<label>Input 1</label>
+		<input type="text" name="input_1" placeholder="input 1">
+		<br><br>
+		<label>Input 2</label>
+  		<input type="text" name="input_2" placeholder="Input 2">
+		<br><br>
+  		<input type="submit" value="Submit">
+	</form>
+
+	<!--
+	<form action="#" method="post">
+		<label>Ticker</label>
 		<input type="text" name="ticker" />
 		<button type="submit">Submit</button>
 	</form>
+	-->
 
 	<!--defines the dropdown button and the content it displays and stlye right positions it on right of screen-->
 	<div class="dropdown" style = "float:right;">
@@ -29,6 +46,13 @@
 		</div>
 	</div>
 
+	<footer>
+		<p>
+			to create a study click the add study button and pick what study you would like. You are able to pick a handful of studies to create
+			a study group. Once you have selected the studies you wish pick what ticker you wish to track and click the submit button. You should
+			see the stock being tracked on the home page.
+		</p>
+	</footer>
 </body>
 
 </html>
