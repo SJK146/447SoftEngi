@@ -1,3 +1,27 @@
+
+
+/*general formatting*/
+body{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+
+
+
+/*styling for the studies page*/
+.table-header{
+    background-color: #5d615f; /*color light grey*/
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+
+
+/*all styles for add_studies page currently mostly covers the drop down menu*/
+
 .dropbtn {
   background-color: #5d615f; /*color light grey*/
   border-radius 10px; /*rounds borders*/
