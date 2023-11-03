@@ -19,6 +19,10 @@ class Study(UserMixin, db.Model): #ie a user 'studies a stock
 	results = db.Column(db.Text, nullable=True)
 	#studies ex: "metric:threshold, metric2:threshold2"  Parse when calling api
 	#Results listed in Text, format same "metric:value, metric2:value" Parse when displaying to frontend
+	input_1 = db.Column(db.String(255))
+	input_2 = db.Column(db.String(255))
+	input_3 = db.Column(db.String(255))
+
 
 class Tests(UserMixin, db.Model):
 	id=db.Column(db.Integer, primary_key=True)

@@ -4,11 +4,28 @@
 {% block content %}
 
 	<h1>Create a new study</h1>
+
+	<!--this is used to take input from multiple text boxes-->
 	<form action="#" method="post">
-		<label for="ticker">Ticker</label>
+		<label>Ticker</label>
+		<input type="text" name="ticker" placeholder="ticker">
+  		<br><br>
+		<label>Input 1</label>
+		<input type="text" name="input_1" placeholder="input 1">
+		<br><br>
+		<label>Input 2</label>
+  		<input type="text" name="input_2" placeholder="Input 2">
+		<br><br>
+  		<input type="submit" value="Submit">
+	</form>
+
+	<!--
+	<form action="#" method="post">
+		<label>Ticker</label>
 		<input type="text" name="ticker" />
 		<button type="submit">Submit</button>
 	</form>
+	-->
 
 	<!--defines the dropdown button and the content it displays and stlye right positions it on right of screen-->
 	<div class="dropdown" style = "float:right;">
