@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>Studies</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-	{% include "nav.html" %}
+{% extends "base.html" %}
+
+{% block content %}
 
     <h1>Welcome back {{ name }}!</h1>
 	{% if not studies %}
@@ -21,5 +15,5 @@
 	</div>
 	{% endif %}
 	<a href="/add_study">New Study</a>
-</body>
-</html>
+
+{{ endblock }}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8" />
+        <title>{{ title }}</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!--used to get functionality for dropdown menu-->
+		<link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
+		
+</head>
+<body>
+    {% include "nav.html" %}
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div style="display: inline; background-color: red;">
+    {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
