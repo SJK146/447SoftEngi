@@ -1,24 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>Home</title>
-</head>
-<body>
-	{% include "nav.html" %}
-	
-	{% with messages = get_flashed_messages() %}
-	{% if messages %}
-    <div style="display: inline; background-color: red;">
-        {{ messages[0] }}
-	</div>
-	{% endif %}
-	{% endwith %}
+{% extends "base.html" %}
+
+{% block content %}
+
 	{% if current_user.is_authenticated %}
 	<h1>You are logged in</h1>
 	<a href="/logout">Logout</a>
 	{% else %}
 	<h1>You are not logged in</h1>
 	{% endif %}
-</body>
-</html>
+
+{{ endblock }}

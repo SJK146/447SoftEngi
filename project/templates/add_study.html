@@ -1,17 +1,8 @@
 <!--this is used for the add study page-->
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-	<meta charset="UTF-8" />
-	<title>New Study</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!--used to get functionality for dropdown menu-->
-</head>
+{% block content %}
 
-<body>
-	{% include "nav.html" %}
-	
 	<h1>Create a new study</h1>
 	<form action="#" method="post">
 		<label for="ticker">Ticker</label>
@@ -29,6 +20,4 @@
 		</div>
 	</div>
 
-</body>
-
-</html>
+{{ endblock }}
