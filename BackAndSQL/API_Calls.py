@@ -1,5 +1,7 @@
 #https://docs.google.com/spreadsheets/d/1glnLrH92hvDENHy2s_REYXJ2cGgpRx10YTlDqKx7xmU/edit?usp=sharing
 import requests
+import json
+
 
 alphaAPIKey = "FV940XIF9BKNU8P5"  
 
@@ -17,7 +19,10 @@ def alpha_SMA(symbol, interval, time_period, series_type):
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()
-        print(data)
+        #print(data)
+        first_date, first_sma_data = next(data['Technical Analysis: SMA'].items())
+        first_sma_value = first_sma_data['SMA']
+        print(first_value)
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
@@ -30,7 +35,10 @@ def alpha_EMA(symbol, interval, time_period, series_type):
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()
-        print(data)
+        #print(data)
+        first_date = next(iter(data[f'Technical Analysis: {function}']))
+        first_value = data[f'Technical Analysis: {function}'][first_date][function]
+        print(first_value)
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
@@ -44,6 +52,9 @@ def alpha_macdcext(symbol, interval, series_type):
         response.raise_for_status()
         data = response.json()
         print(data)
+        first_date, first_macdext_data = next(data['Technical Analysis: MACDEXT'].items())
+        first_macd_value = first_macdext_data['MACD']
+        print(first_value)
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
@@ -56,8 +67,10 @@ def alpha_rsi(symbol, interval, time_period, series_type):
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()
-        print(data)
-
+        #print(data)
+        first_date = next(iter(data[f'Technical Analysis: {function}']))
+        first_value = data[f'Technical Analysis: {function}'][first_date][function]
+        print(first_value)
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
 
@@ -73,20 +86,24 @@ def poly_macd(symbol, timespan):
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()
-        print(data)
+        #print(data)
+        first_date = next(iter(data[f'Technical Analysis: {function}']))
+        first_value = data[f'Technical Analysis: {function}'][first_date][function]
+        print(first_value)
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
 
 
-
+#validated
 #alpha_EMA("TSLA", "weekly", "10", "close")
 print()
-#alpha_macdcext("TSLA", "daily", "open")
+alpha_macdcext("TSLA", "daily", "open")
 print()
+#validated
 #alpha_rsi("TSLA", "weekly", "10", "close")
 print()
-#alpha_SMA("TSLA", "weekly", "10", "close")
+alpha_SMA("TSLA", "weekly", "10", "close")
 print()
 #poly_macd("TSLA", "day")
 
