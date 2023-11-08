@@ -1,12 +1,99 @@
-https://docs.google.com/spreadsheets/d/1glnLrH92hvDENHy2s_REYXJ2cGgpRx10YTlDqKx7xmU/edit?usp=sharing
+#https://docs.google.com/spreadsheets/d/1glnLrH92hvDENHy2s_REYXJ2cGgpRx10YTlDqKx7xmU/edit?usp=sharing
+import requests
 
+alphaAPIKey = "FV940XIF9BKNU8P5"  
+
+#replace print with this to save information
+def record(data):
+    with open("historicCalls.txt", "a") as file:
+        file.write(data)
+        file.write("\n")
+
+#sma https://www.alphavantage.co/query?function=SMA&symbol=IBM&interval=weekly&time_period=10&series_type=open&apikey=demo
+def alpha_SMA(symbol, interval, time_period, series_type):
+    function = "SMA"
+    url = f"https://www.alphavantage.co/query?function={function}&symbol={symbol}&interval={interval}&time_period={time_period}&series_type={series_type}&apikey={alphaAPIKey}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        print(data)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+
+#ema https://www.alphavantage.co/query?function=EMA&symbol=IBM&interval=weekly&time_period=10&series_type=open&apikey=demo
+def alpha_EMA(symbol, interval, time_period, series_type):
+    function = "EMA"
+    url = f"https://www.alphavantage.co/query?function={function}&symbol={symbol}&interval={interval}&time_period={time_period}&series_type={series_type}&apikey={alphaAPIKey}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        print(data)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+
+#madcext https://www.alphavantage.co/query?function=MACDEXT&symbol=IBM&interval=daily&series_type=open&apikey=demo
+def alpha_macdcext(symbol, interval, series_type):
+    function = "MACDEXT"
+    url = f"https://www.alphavantage.co/query?function={function}&symbol={symbol}&interval={interval}&series_type={series_type}&apikey={alphaAPIKey}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        print(data)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+
+#rsi https://www.alphavantage.co/query?function=RSI&symbol=IBM&interval=weekly&time_period=10&series_type=open&apikey=demo
+def alpha_rsi(symbol, interval, time_period, series_type):
+    function = "RSI"
+    url = f"https://www.alphavantage.co/query?function={function}&symbol={symbol}&interval={interval}&time_period={time_period}&series_type={series_type}&apikey={alphaAPIKey}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        print(data)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+
+
+#Polygon.io key
+polyAPIkey = "4JtLI7Qc6imRdHeu4zmxImRud6hQswbQ"
+
+#macd https://api.polygon.io/v1/indicators/macd/AAPL?timespan=day&adjusted=true&short_window=12&long_window=26&signal_window=9&series_type=close&order=desc&apiKey=*
+def poly_macd(symbol, timespan):
+    function = "macd"
+    url = f"https://api.polygon.io/v1/indicators/macd/{symbol}?timespan={timespan}&adjusted=true&short_window=12&long_window=26&signal_window=9&series_type=close&order=desc&apiKey={polyAPIkey}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        print(data)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+
+
+
+#alpha_EMA("TSLA", "weekly", "10", "close")
+print()
+#alpha_macdcext("TSLA", "daily", "open")
+print()
+#alpha_rsi("TSLA", "weekly", "10", "close")
+print()
+#alpha_SMA("TSLA", "weekly", "10", "close")
+print()
+#poly_macd("TSLA", "day")
 
 
 #############################
 #Web Scraping for environmental data 
 #############################
-
-import requests
 import re
 	
 	
