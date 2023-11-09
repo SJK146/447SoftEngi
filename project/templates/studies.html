@@ -1,20 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 <head>
 	<meta charset="UTF-8" />
 	<title>Studies</title>
 </head>
 <body>
 	{% include "nav.html" %}
-
     <h1>Hello, {{ name }}. Stocks are cool.</h1>
 	{% if not studies %}
 	<div>Your have no studies</div>
 	{% else %}
 	<div>Your studies: 
-		{% for study in studies %}
-		<div>{{ study.ticker }}</div>
-		{% endfor %}
+		<table>
+		<tr>
+			<th>studies</th>
+			<th>qty</th>
+			<th>days</th>
+		</tr>
+			{% for study in studies %}
+			<tr>
+				<td>{{ study.ticker }}</td>
+				<td>{{ study.id }}</td>
+				<td>{{ study.user_id }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		
+	</div>
+
+	<p class="space"> </p>
+
+	<table>
+		<tr>
+			<th>studies2</th>
+			<th>qty2</th>
+			<th>days2</th>
+		</tr>
+			{% for study in studies %}
+			<tr>
+				<td>{{ study.ticker }}</td>
+				<td>{{ study.id }}</td>
+				<td>{{ study.user_id }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		
 	</div>
 	{% endif %}
 	<a href="/add_study">New Study</a>
