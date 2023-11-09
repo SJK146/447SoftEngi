@@ -44,3 +44,19 @@ body{
   padding-left: 20px;
   padding-right: 20px;
 }
+
+table{
+  border: 1px solid #000;
+  width: 100%;
+  background-color: #5A5A5A;
+}
+
+td{
+  border: 1px solid #000;
+  background-color: #D3D3D3;
+}
+
+th{
+  border: 1px solid #000;
+  background-color: #D3D3D3;
+}
