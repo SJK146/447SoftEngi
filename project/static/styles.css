@@ -60,3 +60,15 @@ th{
   border: 1px solid #000;
   background-color: #D3D3D3;
 }
+
+.box {
+  justify-content: left;
+  align-items: left;
+  background-color: #5A5A5A;
+  height: 50%;
+  width: 25%;
+}
+
+.center {
+  text-align: center;
+}
