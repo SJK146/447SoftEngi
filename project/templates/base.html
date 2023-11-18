@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block head %}
         <meta charset="UTF-8" />
-        <title>{{ title }}</title>
+        <title>I.N.V.E.S.T.</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!--used to get functionality for dropdown menu-->
 		<link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
-		
+
+        <script src="{{ url_for('static', filename='functions.js') }}" type="text/javascript"></script>
+    {% endblock %}
 </head>
 <body>
     {% include "nav.html" %}

@@ -1,9 +1,46 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block title %}Studies{% endblock %}
 
+{% block head %}
+{{ super() }}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+	{% for chart in charts %}
+	var data{{ loop.index }} = google.visualization.arrayToDataTable([
+{{ chart|safe }}], true);
+	var chart{{ loop.index }} = new google.visualization.CandlestickChart(document.getElementById('chart{{ loop.index }}'));
+
+	var options{{ loop.index }} = {
+      legend: 'none',
+      //bar: { groupWidth: '100' },
+      candlestick: {
+  	  fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+  	  risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+    }
+
+
+  };
+
+  chart{{ loop.index }}.draw(data{{ loop.index }}, options{{ loop.index }});
+
+    {% endfor %}
+  
+}
+</script>
+{% endblock %}
+
+{% block content %}
+{% if text %}
+No Studies
+<a href="/add_study">Track a new stock</a>
+{% else %}
     <h1>Welcome back {{ name }}!</h1>
-	{% if not studies %}
+	<a href="/add_study">Track a new stock</a>
+	{% if not names %}
 	<div>You have no studies</div>
 	{% else %}
 
@@ -21,32 +58,26 @@
 				<td>{{ study.id }}</td>
 				<td>{{ study.user_id }}</td>
 			</tr>
+			<p class="space"> </p>
+				<tr>
+					<th>studies2</th>
+					<th>qty2</th>
+					<th>days2</th>
+				</tr>
+					<tr>
+						<td>{{ names[loop.index0] }}</td>
+						<td>{{ study.id }}</td>
+						<td>{{ study.user_id }}</td>
+					</tr>
+				<tr>
+					<td colspan="3"><div id="chart{{ loop.index }}"></div></td>
+				</tr>
 			{% endfor %}
 		</table>
 		
 	</div>
-
-	<p class="space"> </p>
-
-	<table>
-		<tr>
-			<th>studies2</th>
-			<th>qty2</th>
-			<th>days2</th>
-		</tr>
-			{% for study in studies %}
-			<tr>
-				<td>{{ study.ticker }}</td>
-				<td>{{ study.id }}</td>
-				<td>{{ study.user_id }}</td>
-			</tr>
-			{% endfor %}
-		</table>
 		
 	</div>
 	{% endif %}
-	<a href="/add_study">New Study</a>
-</body>
-</html>
-
+{% endif %}
 {% endblock %}

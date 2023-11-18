@@ -1,6 +1,14 @@
-from flask_login import LoginManager, UserMixin
+from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 import json
+
+from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import MappedAsDataclass
+from sqlalchemy.orm import mapped_column
+from sqlalchemy.orm import relationship
+
+class Base(DeclarativeBase, MappedAsDataclass):
+    pass
 
 db = SQLAlchemy()
 
@@ -9,6 +17,7 @@ class User(UserMixin, db.Model):
 	email = db.Column(db.String(250), unique=True, nullable=False)
 	name = db.Column(db.String(250))
 	password = db.Column(db.String(250), nullable=False)
+	#phone = db.
 
 class Study(UserMixin, db.Model): #ie a user 'studies a stock
 	id=db.Column(db.Integer, primary_key=True)
@@ -46,7 +55,25 @@ class Tests(UserMixin, db.Model):
 #     study_id = db.Column(db.Integer, db.ForeignKey("study.id"), nullable=False)
 #     metric_id = db.Column(db.Integer, db.ForeignKey("metric.id"), nullable=False)
 	
-	
+class Test(db.Model):#loop through yf ticker.info.* to get list of metrics
+    id=db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    formula = db.Column(db.String(50))
+    n_inputs = db.Column(db.Integer, nullable=False)
+    input_name_1 = db.Column(db.String(50))
+    input_name_2 = db.Column(db.String(50))
+    input_name_3 = db.Column(db.String(50))
+
+class StudyTest( db.Model): #This is the thing that the metric studies
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(50))
+	study_id = db.Column(db.Integer, db.ForeignKey("study.id"), nullable=False)
+	test_id = db.Column(db.Integer, db.ForeignKey("test.id"), nullable=False)
+	input_1 = db.Column(db.Integer)
+	input_2 = db.Column(db.Integer)
+	input_3 = db.Column(db.Integer)
+	chart = db.Column(db.Integer)
+
 #ok so the layout for what needs to go in the database
 #-user credentials tagged to their individual data
 #
