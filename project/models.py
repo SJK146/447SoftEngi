@@ -25,6 +25,15 @@ class Tests(UserMixin, db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 	results=db.Column(db.Text, nullable=True)
 
+class Test(db.Model):#loop through yf ticker.info.* to get list of metrics
+        id=db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(50))
+        formula = db.Column(db.String(50))
+        n_inputs = db.Column(db.Integer, nullable=False)
+        input_name_1 = db.Column(db.String(50))
+        input_name_2 = db.Column(db.String(50))
+        input_name_3 = db.Column(db.String(50))
+
 # class Metric(UserMixin, db.Model):#loop through yf ticker.info.* to get list of metrics
 # 	id=db.Column(db.Integer, primary_key=True)
 # 	name = db.Column(db.String(50))

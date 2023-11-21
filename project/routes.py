@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from models import db, User, Study
+from models import db, User, Study, Test
+from sqlalchemy import sql
+import pprint
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
@@ -55,7 +57,12 @@ def studies():
 def add_study():
 	if request.method == "POST":
 		newstudy = Study(user_id=current_user.id, ticker=request.form.get("ticker"))
+		print(request.form) #check the console output to see if the inputs look right
 		db.session.add(newstudy)
 		db.session.commit()
 		return redirect(url_for("studies"))
-	return render_template('add_study.html')
+	test_names = ["input_name_1", "input_name_2", "input_name_3"]
+	query = sql.text("select * from test;")
+	tests = db.session.execute(query)
+	n = list(range(1,4))
+	return render_template('add_study.html', test_names=test_names, n_studies=n, tests=tests)

@@ -3,29 +3,63 @@
 
 {% block content %}
 
-	<h1>Create a new study</h1>
-	<form action="#" method="post">
-		<label for="ticker">Ticker</label>
-		<input type="text" name="ticker" />
-		<button type="submit">Submit</button>
-	</form>
+<h1>Create a new study group</h1>
 
-	<!--defines the dropdown button and the content it displays and stlye right positions it on right of screen-->
-	<div class="dropdown" style = "float:right;">
-		<button class="dropbtn">add studies</button>
+<!--defines the dropdown button and the content it displays and stlye right positions it on right of screen-->
+<!--this is used to take input from multiple text boxes-->
+<form action="#" method="post">
+	<div class="dropdown" style="float:right;">
+		<button class="dropbtn" type="submit">add tests</button>
+
 		<div class="dropdown-content">
-			<a href="#">Link 1</a>
-			<a href="#">Link 2</a>
-			<a href="#">Link 3</a>
+			{% for test in tests %}
+			<div class='dropdown-subcontent-{{ loop.index }}'>
+				<input class="dropdown-checkbox" type="checkbox" name="checkbox-{{ loop.index }}" value="0">
+				{{ test.name }}
+				</input>
+				<div class="testinputs-{{ loop.index }}">
+					{% set outer_loop = loop %}
+					{% for test_name in test_names %}
+					<div class="input-{{ loop.index }}-{{ outer_loop.index }}">
+						{% if loop.index == 1 and test.input_name_1 %}
+						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_1 }}</label>
+						<input type="text" id="input-{{ loop.index }}-{{ outer_loop.index }}"
+						name="input-{{ loop.index }}-{{ outer_loop.index }}" size="5"
+						placeholder="{{ test.input_name_1.lower()}}">
+						{% elif loop.index == 2 and test.input_name_2 %}
+						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_2 }}</label>
+						<select id="input-{{ loop.index }}-{{ outer_loop.index }}"
+						name="input-{{ loop.index }}-{{ outer_loop.index }}">
+						<option value="d">d</option>
+						<option value="mo">mo</option>
+						<option value="y">y</option>
+						</select>
+						{% elif loop.index == 3 and test.input_name_3 %}
+						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_3 }}</label>
+						<input type="text" id="input-{{ loop.index }}-{{ outer_loop.index }}"
+						name="input-{{ loop.index }}-{{ outer_loop.index }}" size="3"
+						placeholder="input {{ loop.index }}-{{ outer_loop.index }}"></input>
+						{% endif %}
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
 		</div>
 	</div>
 
-	<footer>
-		<p>
-			to create a study click the add study button and pick what study you would like. You are able to pick a handful of studies to create
-			a study group. Once you have selected the studies you wish pick what ticker you wish to track and click the submit button. You should
-			see the stock being tracked on the home page.
-		</p>
-	</footer>
-	
+	<label>Ticker</label>
+	<input type="text" name="ticker" placeholder="ticker">
+	<br><br>
+	<input type="submit" value="Submit">
+</form>
+
+<footer>
+	<p>
+		to create a study click the add study button and pick what study you would like. You are able to pick a handful of studies to create
+		a study group. Once you have selected the studies you wish pick what ticker you wish to track and click the submit button. You should
+		see the stock being tracked on the home page.
+	</p>
+</footer>
+
 {% endblock %}
