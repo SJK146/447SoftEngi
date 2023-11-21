@@ -1,23 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<div class="box">
-	<div class="center">
-		<h1>Login to your account</h1>
-	</div>
 	<p>
-		<form action="#" method="post">
-		<label for="email">Email address:</label>
-		<input type="text" name="email" />
+		<form class = "userInput" action="#" method="post">
+		<h3>Login here</h3>
+		<label for="email">Email</label>
+        <input class ="userInputInput" type="text" placeholder="Enter email address" name="email">
+		<label for="password">Password</label>
+        <input class ="userInputInput" type="text" placeholder="Enter password" name="password">
 		<p></p>
-		<label for="password"><br>Password:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-		<input type="password" name="password" />
-		<p><br><br><br></p>
-		<div class="center">
-			<button type="submit">Submit</button>
-		</div>
+		<button class ="userInputButton" type="submit">Submit</button>
 		</form>
 	</p>
-</div>
 {% endblock %}
