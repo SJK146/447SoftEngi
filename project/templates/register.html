@@ -2,21 +2,21 @@
 
 {% block content %}
 	
-	<h1>Create an account</h1>
-	<form action="#" method="post">
+	<form class = "userInput" action="#" method="post">
+		<h3>Create an account</h3>
 		<div>
-			<label for="email">Email address:</label>
-			<input type="text" name="email" />
+		<label for="email">Email</label>
+        <input class ="userInputInput" type="text" placeholder="Enter email address" name="email">
 		</div>
 		<div>
-			<label for="name">Name:</label>
-			<input type="text" name="name" />
+		<label for="name">Name</label>
+        <input class ="userInputInput" type="text" placeholder="Enter name" name="name">
 		</div>
 		<div>
-			<label for="password">Password:</label>
-			<input type="password" name="password" />
+		<label for="email">Password</label>
+        <input class ="userInputInput" type="text" placeholder="Enter password" name="password">
 		</div>
-		<button type="submit">Submit</button>
+		<button class ="userInputButton" type="submit">Submit</button>
 	</form>
 
 {% endblock %}
