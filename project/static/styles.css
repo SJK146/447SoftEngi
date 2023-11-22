@@ -40,26 +40,35 @@
 /* Change the background color of the dropdown button when hovered over*/
 .dropdown:hover .dropbtn {background-color: #555e55;}
 
+/* Table CSS */
+/*Table body formatting*/
 body{
   padding-left: 20px;
   padding-right: 20px;
 }
 
+/*Overall table formatting*/
 table{
   border: 1px solid #000;
   width: 100%;
   background-color: #5A5A5A;
 }
 
+/*Table directory*/
+
 td{
   border: 1px solid #000;
   background-color: #D3D3D3;
 }
 
+/*Table heading*/
+
 th{
   border: 1px solid #000;
   background-color: #D3D3D3;
 }
+
+/*Login template taken from https://codepen.io/fghty/pen/PojKNEG */
 
 .userInput{
 height: 520px;
@@ -75,6 +84,9 @@ border: 2px solid rgba(255,255,255,0.1);
 box-shadow: 0 0 40px rgba(8,7,16,0.6);
 padding: 50px 35px;
 }
+
+/*Additonal user input format.*/
+
 .userInput *{
 font-family: 'Poppins',sans-serif;
 color: #000000;
@@ -82,6 +94,9 @@ letter-spacing: 0.5px;
 outline: none;
 border: none;
 }
+
+/*H3 Format for in forms.*/
+
 form h3{
 font-size: 32px;
 font-weight: 500;
@@ -89,6 +104,8 @@ line-height: 42px;
 text-align: center;
 }
 
+
+/*label formatting (CHANGE IF YOU'RE USING LABEL ELSEWHERE)*/
 label{
 display: block;
 margin-top: 30px;
@@ -96,6 +113,7 @@ font-size: 16px;
 font-weight: 500;
 }
 
+/*Text input for user login area*/
 .userInputInput{
 display: block;
 height: 50px;
@@ -107,6 +125,8 @@ margin-top: 8px;
 font-size: 14px;
 font-weight: 300;
 }
+
+/*Template for buttons used in the user login area*/
 .userInputButton {
 margin-top: 50px;
 width: 100%;
@@ -118,17 +138,3 @@ font-weight: 600;
 border-radius: 5px;
 cursor: pointer;
 }
-
-/*
-.box {
-  margin: auto;
-  text-align: center;
-  background-color: #d1d1d1;
-  height: 50%;
-  width: 25%;
-  box-shadow: 10px 5px 5px #000;
-}
-
-.logininput {
-  width: 80%;
-}*/
