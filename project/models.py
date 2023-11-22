@@ -1,5 +1,6 @@
 from flask_login import LoginManager, UserMixin
 from flask_sqlalchemy import SQLAlchemy
+import json
 
 db = SQLAlchemy()
 
@@ -13,15 +14,33 @@ class Study(UserMixin, db.Model): #ie a user 'studies a stock
 	id=db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 	ticker = db.Column(db.Integer, nullable=False)
+	studies = db.Column(db.Text, nullable=True)
+	historical_data = db.Column(db.Text, nullable=True)
+	results = db.Column(db.Text, nullable=True)
+	#studies ex: "metric:threshold, metric2:threshold2"  Parse when calling api
+	#Results listed in Text, format same "metric:value, metric2:value" Parse when displaying to frontend
 
-class Metric(UserMixin, db.Model):#loop through yf ticker.info.* to get list of metrics
+class Tests(UserMixin, db.Model):
 	id=db.Column(db.Integer, primary_key=True)
-	name = db.Column(db.String(50))
-	
-class Studied(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    study_id = db.Column(db.Integer, db.ForeignKey("study.id"), nullable=False)
-    metric_id = db.Column(db.Integer, db.ForeignKey("metric.id"), nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+	results=db.Column(db.Text, nullable=True)
+
+# class Metric(UserMixin, db.Model):#loop through yf ticker.info.* to get list of metrics
+# 	id=db.Column(db.Integer, primary_key=True)
+# 	name = db.Column(db.String(50))
+
+#id, {metric: 30.0}
+
+# class HistoricalData(UserMixin, db.Model):
+# 	id = db.Column(db.Integer, primary_key=True)
+# 	ticker = db.Column(db.String(250), nullable=False)
+
+
+# class Studied(UserMixin, db.Model):
+# 	# Results table 
+#     id = db.Column(db.Integer, primary_key=True)
+#     study_id = db.Column(db.Integer, db.ForeignKey("study.id"), nullable=False)
+#     metric_id = db.Column(db.Integer, db.ForeignKey("metric.id"), nullable=False)
 	
 	
 #ok so the layout for what needs to go in the database
