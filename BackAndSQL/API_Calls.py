@@ -1,8 +1,7 @@
 #Kyle
-#https://docs.google.com/spreadsheets/d/1glnLrH92hvDENHy2s_REYXJ2cGgpRx10YTlDqKx7xmU/edit?usp=sharing
+#add  BBANDS, STOCH
 import requests
 import json
-
 
 alphaAPIKey = "FV940XIF9BKNU8P5"  
 
