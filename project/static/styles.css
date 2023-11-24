@@ -138,3 +138,14 @@ font-weight: 600;
 border-radius: 5px;
 cursor: pointer;
 }
+
+/*Background settings*/
+body{
+  background-color: #eaeaea;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
