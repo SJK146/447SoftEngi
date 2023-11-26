@@ -1,14 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<div lang="en">
 {% extends "base.html" %}
 
 {% block content %}
 
 	{% if current_user.is_authenticated %}
-	<h1>You are logged in</h1>
-	<a href="/logout">Logout</a>
+		<h4 style="text-align: right;">You are logged in</h4>
+		<!--<a href="/logout">Logout</a>-->
 	{% else %}
-	<h1>You are not logged in</h1>
+		<h4 style="text-align: right;">You are not logged in</h4>
 	{% endif %}
+</div>
 
+<body>
+	<div>
+		<h1>Home Page</h1>
+		<br>
+
+		<h2>
+			mission statement:
+		</h2>
+
+		<p>
+			INVEST empowers investors of all levels to harness the power of technical analysis without the <br>
+			complexities of manual monitoring. By enabling users to effortlessly define and track stocks based off user defined technical study triggers,
+			INVEST streamlines the investment process and delivers timely alerts via email notifications, ensuring investors never miss a potential market-moving opportunity.
+		</p>
+
+
+		<h2>how our product works</h2>
+
+		<ol>
+			<li>you go to the studies page.</li>
+			<li>from there you are able to start tracking stocks by clicking on the "track a new stock" link.</li>
+			<li>after clicking on the "track a new study" link you should input the stock you wish to follow by inputting the stock ticker
+			in the ticker box.</li>
+			<li>afterwards on the far right there is an add studies box when hovering over the button a dropdown will appear and there you will be
+			able to add the studies you want to use to track that particular stock.</li>
+			<li>after you are satisfied with the studies you have selected to use for that particular stock click the "submit" button</li>
+			<li>after clicking the submit button this will bring you back to the studies page where a table will be populated with all of the stocks you are currently
+				tracking</li>
+		</ol>
+
+		<h2>what are technical indicators</h2>
+
+		<p>
+			A technical indicator is a mathematical pattern derived from historical data used by technical traders or investors to predict
+			future price trends and make trading decisions. It uses a mathematical formula to derive a series of data points from past price,
+			volume, and open interest data.
+			<br><br>
+			A technical indicator is usually shown graphically and compared with the corresponding price chart for analysis for the purpose of our application graphical
+			interfaces are not needed. The mechanics of a technical indicator captures the behavior and sometimes the investors’ psychology to provide a clue of future
+			trends of price activity.
+			<br><br>
+			technical indicators offered in technical analysis to predict future price movements include cycle volumes, momentum readings, volume patterns, price trends,
+			Bollinger Bands, moving average, Elliot waves, oscillators, and sentiment indicators.
+			Besides providing valuable insight into the price structure, a technical indicator also shows how to reap potential profits from price movements.
+		</p>
+
+
+		<div class = "study-list-paragraphs">
+			<h2>what studies/ technical indicators do we support?</h2>
+
+			<h3>1. SMA</h3>
+				<p>
+					Moving averages are one of the core indicators in technical analysis, and there are a variety of different versions. SMA is the easiest moving average to construct.
+					It is simply the average price over the specified period. The average is called "moving" because it is plotted on the chart bar by bar,
+					forming a line that moves along the chart as the average value changes.
+					<br><br>
+					SMAs are often used to determine trend direction. If the SMA is moving up, the trend is up. If the SMA is moving down, the trend is down. A 200-bar SMA is common proxy
+					for the long term trend. 50-bar SMAs are typically used to gauge the intermediate trend. Shorter period SMAs can be used to determine shorter term trends.
+					<br><br>
+					SMAs are commonly used to smooth price data and technical indicators. The longer the period of the SMA, the smoother the result, but the more lag that is
+					introduced between the SMA and the source.
+					<br><br>
+					Price crossing SMA is often used to trigger trading signals. When prices cross above the SMA, you might want to go long or cover short; when they cross
+					below the SMA, you might want to go short or exit long.
+				</p>
+
+			<h3>2. EMA</h3>
+				<p>
+					Exponential Moving Average (EMA) is similar to Simple Moving Average (SMA), measuring trend direction over a period of time. However, whereas SMA simply calculates
+					an average of price data, EMA applies more weight to data that is more current. Because of its unique calculation, EMA will follow prices more closely than a corresponding SMA.
+					<br><br>
+					Use the same rules that apply to SMA when interpreting EMA. Keep in mind that EMA is generally more sensitive to price movement. This can be a double-edged sword. On one side,
+					it can help you identify trends earlier than an SMA would. On the flip side, the EMA will probably experience more short-term changes than a corresponding SMA.
+					<br><br>
+					Use the EMA to determine trend direction, and trade in that direction. When the EMA rises, you may want to consider buying when prices dip near or just below the EMA. When the EMA falls,
+					you may consider selling when prices rally towards or just above the EMA.
+					<br><br>
+					Moving averages can also indicate support and resistance areas. A rising EMA tends to support the price action, while a falling EMA tends to provide resistance to price action.
+					This reinforces the strategy of buying when the price is near the rising EMA and selling when the price is near the falling EMA.
+					<br><br>
+					Moving averages can also indicate support and resistance areas. A rising EMA tends to support the price action, while a falling EMA tends to provide resistance to price action.
+					This reinforces the strategy of buying when the price is near the rising EMA and selling when the price is near the falling EMA.
+
+				</p>
+
+
+			<h3>3. Moving Average Convergence/Divergence indicator (MACD)</h3>
+			<p>
+				The Moving Average Convergence/Divergence indicator is a momentum oscillator primarily used to trade trends. Although it is an oscillator, it is not typically used to identify
+				over bought or oversold conditions. It appears on the chart as two lines which oscillate without boundaries. The crossover of the two lines give trading signals similar to a
+				two moving average system.
+				<br><br>
+
+				how does this indicator work?
+				<br><br>
+
+				MACD crossing above zero is considered bullish, while crossing below zero is bearish. Secondly, when MACD turns up from below zero it is considered bullish. When it turns down
+				from above zero it is considered bearish.
+				<br><br>
+				When the MACD line crosses from below to above the signal line, the indicator is considered bullish. The further below the zero line the stronger the signal.
+				<br><br>
+				When the MACD line crosses from above to below the signal line, the indicator is considered bearish. The further above the zero line the stronger the signal.
+				<br><br>
+				During trading ranges the MACD will whipsaw, with the fast line crossing back and forth across the signal line. Users of the MACD generally avoid trading in
+				this situation or close positions to reduce volatility within the portfolio
+				<br><br>
+				Divergence between the MACD and the price action is a stronger signal when it confirms the crossover signals.
+			</p>
+
+			<h3>4. Moving Average Convergence/Divergence indicator Extended (MACDEXT)</h3>
+			<p>
+				same as MACD but with extended hours
+			</p>
+
+			<h3>5.Relative Strength Index (RSI)</h3>
+
+			<p>
+				The Relative Strength Index (RSI), developed by J. Welles Wilder, is a momentum oscillator that measures the speed and change of price movements. The RSI oscillates between zero and 100.
+				Traditionally the RSI is considered overbought when above 70 and oversold when below 30. Signals can be generated by looking for divergences and failure swings. RSI can also be used to
+				identify the general trend.
+				<br><br>
+				RSI is considered overbought when above 70 and oversold when below 30. These traditional levels can also be adjusted if necessary to better fit the security. For example, if a security
+				is repeatedly reaching the overbought level of 70 you may want to adjust this level to 80.
+
+			</p>
+			<h3>6. Stochastics (STOCH)</h3>
+			<p>
+				Similar to the relative strength index (RSI) and moving average convergence/divergence (MACD), stochastics are a momentum measure that ranges from 0 to 100.
+				<br><br>
+				Stochastics are actually made up of 2 lines, which tend to move in tandem. %K (generally a blue line) represents the level of the stock or index's
+				closing price relative to the high and low range over a specified period of time, and %D (generally a orange line ) attempts to smooth out the %K
+				line by taking a 3-day moving average of the %K line. Consequently, %D is generally considered the more important of the 2 lines.
+				<br><br>
+				The theory behind stochastics is that these lines generate buy or sell signals when closing prices are near recent extreme highs or lows (i.e.,
+				sell signals after an uptrend and buy signals after a downtrend). Note that the time frame you pick when using stochastics, or other indicators/fundamentals,
+				is at your discretion, and there is no consensus view as to what time frame optimizes stochastics.
+				<br><br>
+				Generally, the area above 80 indicates an overbought region, while the area below 20 is considered an oversold region. When stochastics are above 80 and move below that number,
+				it indicates a sell signal. When stochastics are below 20 and move above that number, it indicates a buy signal. 80 and 20 are the most common signal levels used, but can be
+				adjusted per individual preferences.
+				<br><br>
+			</p>
+
+			<h3>7.Bollinger Bands (BBANDS)</h3>
+			<p>
+				Bollinger Bands are a type of price envelope developed by John BollingerOpens in a new window. (Price envelopes define upper and lower price range levels.) Bollinger Bands
+				are envelopes plotted at a standard deviation level above and below a simple moving average of the price. Because the distance of the bands is based on standard deviation,
+				they adjust to volatility swings in the underlying price.
+				<br><br>
+				Bollinger Bands use 2 parameters, Period and Standard Deviations, StdDev. The default values are 20 for period, and 2 for standard deviations, although you may customize the combinations.
+				<br><br>
+				Bollinger bands help determine whether prices are high or low on a relative basis. They are used in pairs, both upper and lower bands and in conjunction with a moving average. Further,
+				the pair of bands is not intended to be used on its own. Use the pair to confirm signals given with other indicators.
+				<br><br>
+			</p>
+
+		</div>
+
+	</div>
+</body>
 {% endblock %}
+
