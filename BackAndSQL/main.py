@@ -1,6 +1,4 @@
-#main server process that loops through the db and calls the api to get comparison values 
-#then compares the bd value to the api value 
-# then calls email thingy 
+#TODO in main 
 
 import API_Calls
 
@@ -44,6 +42,15 @@ if __name__ == '__main__':
         time.sleep(45)#sleeps for 45 seconds to put it within the exact minute to run 
     print(f"Starting db comparisons")
     sleep(15)
+
+    #get informaiton from bd, format into useful types 
+
+s
+    #loop iterating through data list 
+        #check ticker and test, make call
+        #do comparision with return 
+        #notify if needed 
+    
 
 
 #SMA, EMA, RSI, MACDEXT, BBANDS, STOCH, MACD
