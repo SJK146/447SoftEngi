@@ -20,8 +20,8 @@ def alpha_SMA(symbol, interval, time_period, series_type):
         response.raise_for_status()
         data = response.json()
         #print(data)
-        first_date, first_sma_data = next(data['Technical Analysis: SMA'].items())
-        first_sma_value = first_sma_data['SMA']
+        most_recent_sma_entry = next(iter(data["Technical Analysis: SMA"].values()))
+        first_value = float(most_recent_sma_entry["SMA"])
         print(first_value)
 
     except requests.exceptions.RequestException as e:
@@ -51,10 +51,10 @@ def alpha_macdcext(symbol, interval, series_type):
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()
-        print(data)
-        first_date, first_macdext_data = next(data['Technical Analysis: MACDEXT'].items())
-        first_macd_value = first_macdext_data['MACD']
-        print(first_value)
+        #print(data)
+        first_entry_macdext = next(iter(data["Technical Analysis: MACDEXT"].values()))
+        macd_value = float(first_entry_macdext["MACD"])
+        print(macd_value)
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
@@ -74,6 +74,40 @@ def alpha_rsi(symbol, interval, time_period, series_type):
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
 
+#BBANDS https://www.alphavantage.co/query?function=BBANDS&symbol=IBM&interval=weekly&time_period=5&series_type=close&apikey=FV940XIF9BKNU8P5
+def alpha_bands(symbol, interval, time_period, series_type):
+    function = "BBANDS"
+    url = f"https://www.alphavantage.co/query?function={function}&symbol={symbol}&interval={interval}&time_period={time_period}&series_type={series_type}&apikey={alphaAPIKey}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        #print(data)
+        first_entry = next(iter(data["Technical Analysis: BBANDS"].values()))
+        real_middle_band = float(first_entry["Real Middle Band"])
+        print(real_middle_band)
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+    
+#STOCH https://www.alphavantage.co/query?function=STOCH&symbol=IBM&interval=daily&apikey=demo
+def alpha_stoch(symbol, interval):
+    function = "STOCH"
+    url = f"https://www.alphavantage.co/query?function={function}&symbol={symbol}&interval={interval}&apikey={alphaAPIKey}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        #print(data)
+        first_entry_stoch = next(iter(data["Technical Analysis: STOCH"].values()))
+        # Extract the value of the "SlowD"
+        first_entry_stoch = next(iter(data["Technical Analysis: STOCH"].values()))
+        slowd_value = float(first_entry_stoch["SlowD"])
+        print(slowd_value)
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+
+
+ 
 
 #Polygon.io key
 polyAPIkey = "4JtLI7Qc6imRdHeu4zmxImRud6hQswbQ"
@@ -95,17 +129,25 @@ def poly_macd(symbol, timespan):
         print(f"Error: {e}")
 
 
+
+
+
 #validated
 #alpha_EMA("TSLA", "weekly", "10", "close")
 print()
-alpha_macdcext("TSLA", "daily", "open")
+#alpha_macdcext("TSLA", "daily", "open")
 print()
 #validated
 #alpha_rsi("TSLA", "weekly", "10", "close")
 print()
-alpha_SMA("TSLA", "weekly", "10", "close")
+#alpha_SMA("TSLA", "weekly", "10", "close")
 print()
 #poly_macd("TSLA", "day")
+#alpha_bands("TSLA", "weekly", "10", "close")
+print()
+#alpha_stoch("TSLA", "weekly")
+print()
+
 
 
 #############################
