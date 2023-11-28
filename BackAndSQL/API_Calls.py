@@ -22,7 +22,8 @@ def alpha_SMA(symbol, interval, time_period, series_type):
         #print(data)
         most_recent_sma_entry = next(iter(data["Technical Analysis: SMA"].values()))
         first_value = float(most_recent_sma_entry["SMA"])
-        print(first_value)
+        #print(first_value)
+        return first_value
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
@@ -38,8 +39,8 @@ def alpha_EMA(symbol, interval, time_period, series_type):
         #print(data)
         first_date = next(iter(data[f'Technical Analysis: {function}']))
         first_value = data[f'Technical Analysis: {function}'][first_date][function]
-        print(first_value)
-
+        #print(first_value)
+        return first_value
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
 
@@ -54,7 +55,8 @@ def alpha_macdcext(symbol, interval, series_type):
         #print(data)
         first_entry_macdext = next(iter(data["Technical Analysis: MACDEXT"].values()))
         macd_value = float(first_entry_macdext["MACD"])
-        print(macd_value)
+        #print(macd_value)
+        return macd_value
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
@@ -70,7 +72,8 @@ def alpha_rsi(symbol, interval, time_period, series_type):
         #print(data)
         first_date = next(iter(data[f'Technical Analysis: {function}']))
         first_value = data[f'Technical Analysis: {function}'][first_date][function]
-        print(first_value)
+        return first_value
+        #print(first_value)
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
 
@@ -85,7 +88,8 @@ def alpha_bands(symbol, interval, time_period, series_type):
         #print(data)
         first_entry = next(iter(data["Technical Analysis: BBANDS"].values()))
         real_middle_band = float(first_entry["Real Middle Band"])
-        print(real_middle_band)
+        #print(real_middle_band)
+        return real_middle_band
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
     
@@ -102,12 +106,10 @@ def alpha_stoch(symbol, interval):
         # Extract the value of the "SlowD"
         first_entry_stoch = next(iter(data["Technical Analysis: STOCH"].values()))
         slowd_value = float(first_entry_stoch["SlowD"])
-        print(slowd_value)
+        #print(slowd_value)
+        return slowd_value
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
-
-
- 
 
 #Polygon.io key
 polyAPIkey = "4JtLI7Qc6imRdHeu4zmxImRud6hQswbQ"
@@ -123,7 +125,8 @@ def poly_macd(symbol, timespan):
         #print(data)
         first_date = next(iter(data[f'Technical Analysis: {function}']))
         first_value = data[f'Technical Analysis: {function}'][first_date][function]
-        print(first_value)
+        #print(first_value)
+        return first_value
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
@@ -147,7 +150,6 @@ print()
 print()
 #alpha_stoch("TSLA", "weekly")
 print()
-
 
 
 #############################
