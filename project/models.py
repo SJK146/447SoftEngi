@@ -1,5 +1,6 @@
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import event
 import json
 
 from sqlalchemy.orm import DeclarativeBase
@@ -19,6 +20,11 @@ class User(UserMixin, db.Model):
 	password = db.Column(db.String(250), nullable=False)
 	#phone = db.
 
+@event.listens_for(User.__table__, 'after_create')
+def initaliaze_user(*args, **kwargs):
+	db.session.add(User(id=1, email='bob@bob.com', name='Bob', password='scrypt:32768:8:1$Gt3t4ETVJR1eb6Fh$0822fe5f6df875a78ca7f58a106251f470377096656e1929f4d0aee473452e84e540afb90316885822fb87a88543ad750ae59972875f0448a2774135c0a1bd2f'))
+	db.session.commit()
+	
 class Study(UserMixin, db.Model): #ie a user 'studies a stock
 	id=db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
@@ -63,6 +69,15 @@ class Test(db.Model):#loop through yf ticker.info.* to get list of metrics
     input_name_1 = db.Column(db.String(50))
     input_name_2 = db.Column(db.String(50))
     input_name_3 = db.Column(db.String(50))
+	
+@event.listens_for(Test.__table__, 'after_create')
+def initaliaze_test(*args, **kwargs):
+	db.session.add(Test(id=1, name='CCI', n_inputs=2, input_name_1='Interval', input_name_2='Time Period', input_name_3=None))
+	db.session.add(Test(id=2, name='SMA', n_inputs=3, input_name_1='Interval', input_name_2='Time Period', input_name_3='Series Type'))
+	db.session.add(Test(id=3, name='EMA', n_inputs=3, input_name_1='Interval', input_name_2='Time Period', input_name_3='Series Type'))
+	db.session.add(Test(id=4, name='RSI', n_inputs=3, input_name_1='Interval', input_name_2='Time Period', input_name_3='Series Type'))
+	db.session.add(Test(id=5, name='OHLC', n_inputs=2, input_name_1='Interval', input_name_2='Time Period', input_name_3=None))
+	db.session.commit()
 
 class StudyTest( db.Model): #This is the thing that the metric studies
 	id = db.Column(db.Integer, primary_key=True)
