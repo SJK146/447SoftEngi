@@ -212,6 +212,42 @@ font-size: 14px;
 font-weight: 300;
 }
 
+/*Text heading for pages MAINLY home*/
+.mainTitle{
+  text-align: center;
+  text-decoration-line: underline;
+  text-decoration-style: double;
+  text-decoration-thickness: auto;
+  text-shadow: #989898 0.1em 0.1em 0.1em;
+  
+}
+
+.homeText{
+  border: 4px solid darkgray;
+  box-shadow: #989898 5px 5px 5px;
+  width: 50%;
+  padding: 2%;
+}
+
+.homeTextOl{
+  border: 4px solid darkgray;
+  box-shadow: #989898 5px 5px 5px;
+  width: 50%;
+  padding: 2%;
+}
+
+/*Background settings*/
+body{
+  background-color: #eaeaea;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 /*Template for buttons used in the user login area*/
 .userInputButton {
 margin-top: 50px;
@@ -224,20 +260,6 @@ font-weight: 600;
 border-radius: 5px;
 cursor: pointer;
 }
-
-/*
-.box {
-  margin: auto;
-  text-align: center;
-  background-color: #d1d1d1;
-  height: 50%;
-  width: 25%;
-  box-shadow: 10px 5px 5px #000;
-}
-
-.logininput {
-  width: 80%;
-}*/
 
 
 .selected{
@@ -252,8 +274,6 @@ cursor: pointer;
     font-size: 16px;
     border: none;
 }
-
-
 
 /*all styles for add_studies page currently mostly covers the drop down menu*/
 
