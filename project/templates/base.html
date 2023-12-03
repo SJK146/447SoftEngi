@@ -15,7 +15,7 @@
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-    <div style="display: inline; background-color: red;">
+    <div class="error_msg">
     {{ messages[0] }}
     </div>
     {% endif %}

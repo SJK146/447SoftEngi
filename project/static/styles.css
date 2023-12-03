@@ -99,6 +99,17 @@ th{
   background-color: #D3D3D3;
 }
 
+.error_msg {
+  display: inline;
+  background-color: red;
+  color: white;
+  margin-top: 20em;
+  padding: .25em;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
 /*Login template taken from https://codepen.io/fghty/pen/PojKNEG */
 
 .userInput{
@@ -142,6 +153,11 @@ display: block;
 margin-top: 30px;
 font-size: 16px;
 font-weight: 500;
+}
+
+/*override label style for dropdown menu*/
+.dropdown-content label {
+  margin-top: .2em;
 }
 
 /*Text input for user login area*/
