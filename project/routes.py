@@ -21,7 +21,10 @@ app.config["SECRET_KEY"] = "fpoijaf984qiub98rtbnusp9uwrnb150vmpautj"
 
 @app.route("/")
 def home():
-	return render_template("home.html")
+	if current_user.is_authenticated:
+		return render_template("home.html", name=current_user.name)
+	else:
+		return render_template("home.html")
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
