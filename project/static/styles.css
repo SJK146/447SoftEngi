@@ -71,61 +71,6 @@ th{
     border: none;
 }
 
-
-
-/*all styles for add_studies page currently mostly covers the drop down menu*/
-
-.dropbtn {
-    background-color: #5d615f; /*color light grey*/
-    border-radius: 10px; /*rounds borders*/
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    text-align: left;
-    position: relative;
-    display: inline-block;
-    margin-right: 3em;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    text-align: left;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-div[class^='testinputs-'] {
-    z-index: 0;
-    display: none;
-    padding-left: .5em;
-}
-
-/* Links inside the dropdown */
-div[class^='dropdown-subcontent-'] {
-    text-align: left;
-    color: black;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;} /*currently light grey*/
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
-
-/* Change the background color of the dropdown button when hovered over*/
-.dropdown:hover .dropbtn {background-color: #555e55;}
-
 /* Table CSS */
 /*Table body formatting*/
 body{
