@@ -30,8 +30,8 @@ class Study(UserMixin, db.Model): #ie a user 'studies a stock
 	user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 	ticker = db.Column(db.Integer, nullable=False)
 	studies = db.Column(db.Text, nullable=True)
-	historical_data = db.Column(db.Text, nullable=True)
-	results = db.Column(db.Text, nullable=True)
+	# historical_data = db.Column(db.Text, nullable=True)
+	# results = db.Column(db.Text, nullable=True)
 	#studies ex: "metric:threshold, metric2:threshold2"  Parse when calling api
 	#Results listed in Text, format same "metric:value, metric2:value" Parse when displaying to frontend
 	input_1 = db.Column(db.String(255))

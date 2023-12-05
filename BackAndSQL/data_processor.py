@@ -3,7 +3,7 @@ from ....project.models import db, User, Study, Tests
 
 
 def run_data_processor(db):
-    studies = Study.query.all()
+    studies = db.session.query(Study).all()
 
     study_data = []
     for item in studies:
@@ -13,8 +13,6 @@ def run_data_processor(db):
             "user_id": item.user_id,
             "ticker": item.ticker,
             "studies": item.studies,
-            "historical_data": item.historical_data,
-            "results": item.results
         })
 
     return study_data

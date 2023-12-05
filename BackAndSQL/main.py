@@ -3,10 +3,10 @@
 import API_Calls
 
 from flask import Flask
-from data_processor import run_data_processor
+# from data_processor import run_data_processor
 # from api_handler import handle_api_requests
 from flask_sqlalchemy import SQLAlchemy
-from ....project.models import db, User, Study, Tests 
+from ..project.models import db, User, Study, Tests 
 
 #email stuff 
 import smtplib
@@ -29,9 +29,30 @@ app.config['SECRET_KEY'] = 'the_secret_key'
 
 db.init_app(app)
 
+def run_data_processor():
+    studies = db.session.query(Study).all()
+
+    study_data = []
+    for item in studies:
+
+        study_data.append({
+            "id": item.id,
+            "user_id": item.user_id,
+            "ticker": item.ticker,
+            "studies": item.studies,
+        })
+
+    return study_data
+
+def add_test_result(user_id, results_data):
+    user = User.query.get(user_id)
+    new_test = Tests(user=user, results=results_data)
+    db.session.add(new_test)
+    db.session.commit()
+
 if __name__ == '__main__':
     
-    run_data_processor(db)
+    run_data_processor()
     # handle_api_requests()
 
     target_time = datetime.time(7, 30)#7:30AM
@@ -41,11 +62,11 @@ if __name__ == '__main__':
             break
         time.sleep(45)#sleeps for 45 seconds to put it within the exact minute to run 
     print(f"Starting db comparisons")
-    sleep(15)
+    time.sleep(15)
 
     #get informaiton from bd, format into useful types 
 
-s
+
     #loop iterating through data list 
         #check ticker and test, make call
         #do comparision with return 
@@ -65,7 +86,15 @@ s
 
 
 
+def returnEmail(user_id):
+    study_instance = db.session.query(Study).get(user_id)
+    
+    if study_instance:
+        user_instance = db.session.query(User).get(study_instance.user_id)
+        if user_instance:
+            return user_instance.email
 
+    return None
 
 def send_email(recipient_email):
     subject = "Stock Trigger Notification"
