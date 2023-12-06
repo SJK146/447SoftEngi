@@ -13,6 +13,8 @@ import numpy
 import pandas as pd
 pd.set_option('display.max_rows', None)
 import re
+from email_validator import validate_email, EmailNotValidError
+
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
