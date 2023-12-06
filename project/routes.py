@@ -30,13 +30,28 @@ def home():
 def register():
 	if request.method == "POST":
 		new_email = request.form.get("email")
-		row = User.query.filter_by(email=request.form.get("email")).first()
+		new_name = request.form.get("name")
+		new_password = request.form.get("password")
+		try:
+			validated = validate_email(new_email, check_deliverability=False)
+			new_email = validated.normalized
+		except EmailNotValidError as e:
+			flash(str(e))
+			return render_template("register.html")
+		if not new_name:
+			flash("Name is required.  Please enter your name.")
+			return(render_template("register.html"))
+		if not new_password:
+			flash("Empty password not permitted.")
+			return(render_template("register.html"))
+
+		row = User.query.filter_by(email=new_email).first()
 		if row is not None and new_email == row.email:
 			flash("Email exists.  Please login")
 			return redirect(url_for("login"))
 		user = User(email=new_email,
-			   		name=request.form.get("name"),
-					password=generate_password_hash(request.form.get("password"), method='scrypt'))
+					name=new_name,
+					password=generate_password_hash(new_password, method='scrypt'))
 		db.session.add(user)
 		db.session.commit()
 		return redirect(url_for("login"))
