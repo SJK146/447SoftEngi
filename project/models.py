@@ -37,6 +37,7 @@ class Study(UserMixin, db.Model): #ie a user 'studies a stock
 	input_1 = db.Column(db.String(255))
 	input_2 = db.Column(db.String(255))
 	input_3 = db.Column(db.String(255))
+	chart = db.Column(db.Integer)
 
 
 class Tests(UserMixin, db.Model):
@@ -62,22 +63,26 @@ class Tests(UserMixin, db.Model):
 #     metric_id = db.Column(db.Integer, db.ForeignKey("metric.id"), nullable=False)
 	
 class Test(db.Model):#loop through yf ticker.info.* to get list of metrics
-    id=db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    formula = db.Column(db.String(50))
-    n_inputs = db.Column(db.Integer, nullable=False)
-    input_name_1 = db.Column(db.String(50))
-    input_name_2 = db.Column(db.String(50))
-    input_name_3 = db.Column(db.String(50))
-	
+	id=db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(50))
+	formula = db.Column(db.String(50))
+	n_inputs = db.Column(db.Integer, nullable=False)
+	input_name_1 = db.Column(db.String(50))
+	input_name_2 = db.Column(db.String(50))
+	input_name_3 = db.Column(db.String(50))
+	input_name_4 = db.Column(db.String(50))
+
 @event.listens_for(Test.__table__, 'after_create')
 def initaliaze_test(*args, **kwargs):
-	db.session.add(Test(id=1, name='CCI', n_inputs=2, input_name_1='Interval', input_name_2='Time Period', input_name_3=None))
-	db.session.add(Test(id=2, name='SMA', n_inputs=3, input_name_1='Interval', input_name_2='Time Period', input_name_3='Series Type'))
-	db.session.add(Test(id=3, name='EMA', n_inputs=3, input_name_1='Interval', input_name_2='Time Period', input_name_3='Series Type'))
-	db.session.add(Test(id=4, name='RSI', n_inputs=3, input_name_1='Interval', input_name_2='Time Period', input_name_3='Series Type'))
-	db.session.add(Test(id=5, name='OHLC', n_inputs=2, input_name_1='Interval', input_name_2='Time Period', input_name_3=None))
+	db.session.add(Test(id=1, name='SMA',     n_inputs=4, input_name_1='Test Interval', input_name_2='Comparison Being Made', input_name_3='Value For Comparison', input_name_4='Time Period'))
+	db.session.add(Test(id=2, name='EMA',     n_inputs=4, input_name_1='Test Interval', input_name_2='Comparison Being Made', input_name_3='Value For Comparison', input_name_4='Time Period'))
+	db.session.add(Test(id=3, name='MACDEXT', n_inputs=3, input_name_1='Test Interval', input_name_2='Comparison Being Made', input_name_3='Value For Comparison', input_name_4=None))
+	db.session.add(Test(id=4, name='RSI',     n_inputs=4, input_name_1='Test Interval', input_name_2='Comparison Being Made', input_name_3='Value For Comparison', input_name_4='Time Period'))
+	db.session.add(Test(id=5, name='BBANDS',  n_inputs=4, input_name_1='Test Interval', input_name_2='Comparison Being Made', input_name_3='Value For Comparison', input_name_4='Time Period'))
+	db.session.add(Test(id=6, name='STOCH',   n_inputs=3, input_name_1='Test Interval', input_name_2='Comparison Being Made', input_name_3='Value For Comparison', input_name_4=None))
+	db.session.add(Test(id=7, name='MACD',    n_inputs=3, input_name_1='Test Interval', input_name_2='Comparison Being Made', input_name_3='Value For Comparison', input_name_4=None))
 	db.session.commit()
+	db.session.close()
 
 class StudyTest( db.Model): #This is the thing that the metric studies
 	id = db.Column(db.Integer, primary_key=True)
@@ -87,7 +92,7 @@ class StudyTest( db.Model): #This is the thing that the metric studies
 	input_1 = db.Column(db.Integer)
 	input_2 = db.Column(db.Integer)
 	input_3 = db.Column(db.Integer)
-	chart = db.Column(db.Integer)
+	input_4 = db.Column(db.Integer)
 
 #ok so the layout for what needs to go in the database
 #-user credentials tagged to their individual data

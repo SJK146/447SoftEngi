@@ -110,6 +110,9 @@ th{
   box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
 
+.chart {
+  height: 500px;
+}
 /*Login template taken from https://codepen.io/fghty/pen/PojKNEG */
 
 .userInput{

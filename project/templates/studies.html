@@ -16,11 +16,12 @@
 
 	var options{{ loop.index }} = {
       legend: 'none',
-      //bar: { groupWidth: '100' },
+      bar: { groupWidth: '90%' },
       candlestick: {
-  	  fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
-  	  risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
-    }
+  	  fallingColor: { strokeWidth: 1, stroke:'#505050',fill: '#a52714' }, // red
+  	  risingColor: { strokeWidth: 1, stroke:'#505050', fill: '#0f9d58' }   // green
+    },
+	colors: ['#505050']
 
 
   };
@@ -43,37 +44,35 @@ No Studies
 	{% if not names %}
 	<div>You have no studies</div>
 	{% else %}
-
 	<div>
 		<div class = "table-header">Your tracked stocks:</div> <!--needs to be formatted better its whatever rn-->
-		<table>
-		<tr>
-			<th>studies</th>
-			<th>qty</th>
-			<th>days</th>
-		</tr>
 			{% for study in studies %}
+			<table>
+				<tr>
+					<th>{{ study.ticker }}</th>
+				</tr>
 			<tr>
-				<td>{{ study.ticker }}</td>
-				<td>{{ study.id }}</td>
-				<td>{{ study.user_id }}</td>
+				<td><div id="chart{{ loop.index }}" class="chart"></div></td>
 			</tr>
-			<p class="space"> </p>
-				<tr>
-					<th>studies2</th>
-					<th>qty2</th>
-					<th>days2</th>
-				</tr>
-					<tr>
-						<td>{{ names[loop.index0] }}</td>
-						<td>{{ study.id }}</td>
-						<td>{{ study.user_id }}</td>
-					</tr>
-				<tr>
-					<td colspan="3"><div id="chart{{ loop.index }}"></div></td>
-				</tr>
+				{% set outer_loop = loop %}
+				{% for studytest in studytests %}
+					{% if study.id == studytests[loop.index0].study_test_id %}
+					{% set test = studytests[loop.index0] %}
+					<tr><td>
+						{{ test.ticker }}, 
+						&lcub;TestType({{ test.name }}) 
+						{{ test.input_name_1|replace(' ', '') }}({{ test.input_1 }}) 
+						{{ test.input_name_2|replace(' ', '') }}({{ test.input_2 }})
+						{{ test.input_name_3|replace(' ', '') }}({{ test.input_3 }})
+						{% if test.input_name_4 %}
+							{{ test.input_name_4|replace(' ', '') }}({{ test.input_4 }})
+						{% endif %}
+						&rcub;</td></tr>
+					{% endif %}
+				{% endfor %}
+			</table>
+			<br>
 			{% endfor %}
-		</table>
 		
 	</div>
 		

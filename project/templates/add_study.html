@@ -4,7 +4,6 @@
 {% block content %}
 
 <h1>Create a new study group</h1>
-
 <!--defines the dropdown button and the content it displays and stlye right positions it on right of screen-->
 <!--this is used to take input from multiple text boxes-->
 <form action="#" method="post">
@@ -23,19 +22,27 @@
 					<div class="input-{{ loop.index }}-{{ outer_loop.index }}">
 						{% if loop.index == 1 and test.input_name_1 %}
 						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_1 }}</label>
-						<input type="text" id="input-{{ loop.index }}-{{ outer_loop.index }}"
-						name="input-{{ loop.index }}-{{ outer_loop.index }}" size="5"
-						placeholder="{{ test.input_name_1.lower()}}">
+						<select id="input-{{ loop.index }}-{{ outer_loop.index }}"
+						name="input-{{ loop.index }}-{{ outer_loop.index }}">
+						<option value="d">d</option>
+						<option value="mo">w</option>
+						<option value="mo">m</option>
+						<option value="y">y</option>
+						</select>
 						{% elif loop.index == 2 and test.input_name_2 %}
 						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_2 }}</label>
 						<select id="input-{{ loop.index }}-{{ outer_loop.index }}"
 						name="input-{{ loop.index }}-{{ outer_loop.index }}">
-						<option value="d">d</option>
-						<option value="mo">mo</option>
-						<option value="y">y</option>
+						<option value=">">&gt;</option>
+						<option value="<">&lt;</option>
 						</select>
 						{% elif loop.index == 3 and test.input_name_3 %}
 						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_3 }}</label>
+						<input type="text" id="input-{{ loop.index }}-{{ outer_loop.index }}"
+						name="input-{{ loop.index }}-{{ outer_loop.index }}" size="3"
+						placeholder="input {{ loop.index }}-{{ outer_loop.index }}"></input>
+						{% elif loop.index == 4 and test.input_name_4 %}
+						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_4 }}</label>
 						<input type="text" id="input-{{ loop.index }}-{{ outer_loop.index }}"
 						name="input-{{ loop.index }}-{{ outer_loop.index }}" size="3"
 						placeholder="input {{ loop.index }}-{{ outer_loop.index }}"></input>
