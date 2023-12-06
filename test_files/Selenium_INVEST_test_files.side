@@ -593,6 +593,20 @@
       ],
       "value": ""
     }, {
+      "id": "3eb921ba-8cef-4643-bc87-76890e7ce911",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=logout",
+      "targets": [
+        ["linkText=logout", "linkText"],
+        ["css=li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/logout')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
       "id": "63da1ce7-f0b7-4b28-ad8a-dff6c0c16a43",
       "comment": "",
       "command": "close",
