@@ -1,21 +1,38 @@
 .nav ul {
   display:flex;
-  background-color: #ddd;
+  background-color: #1e2124;
   padding-top: .5em;
   padding-bottom: .5em;
   padding-left: 0;
 
 }.nav li {
-    display: inline;
+  display: inline;
   list-style-type: none;
   border-style: solid;
   border-color: darkgrey;
   border-width: 1px;
   padding: .2em;
   margin: 0;
+  color: white;
 }
 .nav a {
   font-family: sans-serif;
   text-decoration: none;
   border-color: black;
+}
+
+.nav a:active {
+  color: #FFFF;
+}
+  
+.nav a:visited {
+  color: #FFFF;
+  }
+  
+.nav a:link {
+  color: #FFFF;
+}
+  
+.nav a:hover {
+  color: #FFFF;
 }
