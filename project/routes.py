@@ -82,7 +82,6 @@ def logout():
 #
 #
 #route for the main page that shows all a user's studygroups
-#it should be called /studygroups
 @app.route("/studies")
 @login_required
 def studies():
@@ -219,3 +218,38 @@ def add_study():
 	db.session.close()
 	return render_template('add_study.html', studies=studies, 
 						test_names=test_names, n_studies=n, tests=tests)
+
+#route for the main page that shows all a user's studygroups
+#it should be called /studygroups
+@app.route("/get_studies")
+#@login_required - login not required - should have an api key instead
+def get_studies():
+	studies_query = sql.text("select id, ticker from study")
+	studies = db.session.execute(studies_query).all()
+	
+	if len(studies): #if there are any studies selected
+		studytest_query = sql.text("""
+				select 
+					study.ticker AS ticker, 
+					test.name AS name, 
+					test.input_name_1 AS input_name_1, 
+					test.input_name_2 AS input_name_2, 
+					test.input_name_3 AS input_name_3,
+					test.input_name_4 AS input_name_4,
+					study_test.study_id AS study_test_id,
+					study_test.input_1 AS input_1, 
+					study_test.input_2 AS input_2, 
+					study_test.input_3 AS input_3,
+					study_test.input_4 AS input_4
+				from 
+					test, study_test, study, user 
+				where 
+					test.id=study_test.test_id 
+					and study_test.study_id = study.id 
+					and study_test.test_id = test.id
+				""")
+		studytests = db.session.execute(studytest_query).all()
+		print(studytests)
+		db.session.close()
+		return render_template('get_studies.html', studies=studies, studytests=studytests)
+	return render_template('studies.html', text="No Studies")
