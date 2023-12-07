@@ -7,9 +7,13 @@
 <!--defines the dropdown button and the content it displays and stlye right positions it on right of screen-->
 <!--this is used to take input from multiple text boxes-->
 <form action="#" method="post">
-	<div class="dropdown" style="float:right;">
-		<button class="dropbtn" type="submit">add tests</button>
-
+	<label>Ticker: 
+	<input type="text" name="ticker" placeholder="ticker" size="8">
+	</label>
+	<br>
+	<div class="dropdown">
+		<button class="dropbtn" type="button">add tests</button>
+		<input type="submit" value="Submit">
 		<div class="dropdown-content">
 			{% for test in tests %}
 			<div class='dropdown-subcontent-{{ loop.index }}'>
@@ -21,31 +25,35 @@
 					{% for test_name in test_names %}
 					<div class="input-{{ loop.index }}-{{ outer_loop.index }}">
 						{% if loop.index == 1 and test.input_name_1 %}
-						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_1 }}</label>
+						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_1 }}: 
 						<select id="input-{{ loop.index }}-{{ outer_loop.index }}"
 						name="input-{{ loop.index }}-{{ outer_loop.index }}">
 						<option value="d">d</option>
-						<option value="mo">w</option>
-						<option value="mo">m</option>
+						<option value="w">w</option>
+						<option value="m">m</option>
 						<option value="y">y</option>
 						</select>
+						</label>
 						{% elif loop.index == 2 and test.input_name_2 %}
-						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_2 }}</label>
+						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_2 }}: 
 						<select id="input-{{ loop.index }}-{{ outer_loop.index }}"
 						name="input-{{ loop.index }}-{{ outer_loop.index }}">
 						<option value=">">&gt;</option>
 						<option value="<">&lt;</option>
 						</select>
+						</label>
 						{% elif loop.index == 3 and test.input_name_3 %}
-						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_3 }}</label>
+						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_3 }}: 
 						<input type="text" id="input-{{ loop.index }}-{{ outer_loop.index }}"
 						name="input-{{ loop.index }}-{{ outer_loop.index }}" size="3"
-						placeholder="input {{ loop.index }}-{{ outer_loop.index }}"></input>
+						placeholder="int"></input>
+						</label>
 						{% elif loop.index == 4 and test.input_name_4 %}
-						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_4 }}</label>
+						<label for="input-{{ loop.index }}-{{ outer_loop.index }}">{{ test.input_name_4 }}: 
 						<input type="text" id="input-{{ loop.index }}-{{ outer_loop.index }}"
 						name="input-{{ loop.index }}-{{ outer_loop.index }}" size="3"
-						placeholder="input {{ loop.index }}-{{ outer_loop.index }}"></input>
+						placeholder="int"></input>
+						</label>
 						{% endif %}
 					</div>
 					{% endfor %}
@@ -54,11 +62,6 @@
 			{% endfor %}
 		</div>
 	</div>
-
-	<label>Ticker</label>
-	<input type="text" name="ticker" placeholder="ticker">
-	<br><br>
-	<input type="submit" value="Submit">
 </form>
 
 <footer>
