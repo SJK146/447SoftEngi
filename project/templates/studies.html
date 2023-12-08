@@ -21,8 +21,14 @@
   	  fallingColor: { strokeWidth: 1, stroke:'#505050',fill: '#a52714' }, // red
   	  risingColor: { strokeWidth: 1, stroke:'#505050', fill: '#0f9d58' }   // green
     },
-	colors: ['#505050']
 
+	hAxis: {
+    textStyle:{color: '#FFF'}
+	},
+	
+	backgroundColor: '#424549', //gray background
+	colors: ['#505050']
+	
 
   };
 
@@ -54,7 +60,6 @@ No Studies
 			<tr>
 				<td><div id="chart{{ loop.index }}" class="chart"></div></td>
 			</tr>
-<<<<<<< HEAD
 				{% set outer_loop = loop %}
 				{% for studytest in studytests %}
 					{% if study.id == studytests[loop.index0].study_test_id %}
@@ -73,11 +78,9 @@ No Studies
 				{% endfor %}
 			</table>
 			<br>
-=======
 			<p class="space"> </p>
 					<td colspan="3"><div id="chart{{ loop.index }}"></div></td>
 				</tr>
->>>>>>> 871e70c (some html styling)
 			{% endfor %}
 		
 	</div>

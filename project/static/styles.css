@@ -8,6 +8,11 @@
 /*entire site*/
 *{
   font-family: sans-serif;
+  color: #FFFF;
+}
+
+h1{
+  color: white;
 }
 
 a:active {
@@ -84,8 +89,8 @@ background-color: #ddd;
 
 /*styling for the studies page*/
 .table-header{
-  background-color: #D3D3D3; /*color light grey*/
-  color: white;
+  background-color: #36393e;
+  color: #36393e;
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -268,7 +273,7 @@ background-color: #ddd;
 
 /*styling for the studies page*/
 .table-header{
-  background-color: #5d615f; /*color light grey*/
+  background-color: #36393e;
   color: white;
   padding: 16px;
   font-size: 16px;
