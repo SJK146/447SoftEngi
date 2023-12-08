@@ -8,27 +8,23 @@
 /*entire site*/
 *{
   font-family: sans-serif;
-  color: #FFFF;
-}
-
-h1{
-  color: white;
+  color: #e6e6e6;
 }
 
 a:active {
-color: #FFFF;
+color: #e6e6e6;
 }
 
 a:visited {
-color: #FFFF;
+color: #e6e6e6;
 }
 
 a:link {
-color: #FFFF;
+color: #e6e6e6;
 }
 
 a:hover {
-color: #FFFF;
+color: #e6e6e6;
 }
 
 /*general formatting*/
@@ -41,7 +37,7 @@ body{
 p {
   font-size: 18px;
   font-weight: 400;
-  color: #333;
+  color: #e6e6e6;
   text-align: justify;
   margin-left: 3%; /*indents the paragraphs*/
   margin-right: 15%;
@@ -106,7 +102,7 @@ padding-right: 20px;
 
 /*Overall table formatting*/
 table{
-color: #FFFFFF;
+color: #e6e6e6;
 border: 1px solid #000;
 width: 100%;
 background-color: #282b30;
@@ -145,7 +141,7 @@ height: 300px;
 .userInput{
 height: 520px;
 width: 400px;
-color: #FFFFFF;
+color: #e6e6e6;
 position: absolute;
 transform: translate(-50%,-50%);
 top: 50%;
@@ -161,7 +157,7 @@ padding: 50px 35px;
 
 .userInput *{
 font-family: 'Poppins',sans-serif;
-color: #FFFFFF;
+color: #e6e6e6;
 letter-spacing: 0.5px;
 outline: none;
 border: none;
@@ -174,7 +170,7 @@ font-size: 32px;
 font-weight: 500;
 line-height: 42px;
 text-align: center;
-color: #FFFFFF;
+color: #e6e6e6;
 }
 
 
@@ -211,18 +207,18 @@ text-decoration-line: underline;
 text-decoration-style: double;
 text-decoration-thickness: auto;
 text-shadow: #989898 0.1em 0.1em 0.1em;
-color: #FFFFFF;
+color: #e6e6e6;
 
 }
 
 h2{
-color: #FFFFFF;
+color: #e6e6e6;
 text-decoration-line: underline;
 text-shadow: #989898 0.1em 0.1em 0.1em;
 }
 
 h3{
-color: #FFFFFF;
+color: #e6e6e6;
 }
 
 .homeText{
@@ -230,7 +226,7 @@ border: 4px solid #36393F;
 box-shadow: #36393F 5px 5px 5px;
 width: 50%;
 padding: 2%;
-color: #FFFFFF;
+color: #e6e6e6;
 }
 
 .homeTextOl{
@@ -238,7 +234,7 @@ border: 4px solid #36393F;
 box-shadow: #36393F 5px 5px 5px;
 width: 50%;
 padding: 2%;
-color: #FFFFFF;
+color: #e6e6e6;
 }
 
 /*Background settings*/
@@ -258,14 +254,23 @@ margin-right: auto;
 margin-top: 50px;
 width: 100%;
 background-color: rgba(106, 106, 106, 0.258);
-color: #FFFFFF;;
+color: #e6e6e6;
 padding: 15px 0;
 font-size: 18px;
 font-weight: 600;
 border-radius: 5px;
 cursor: pointer;
 }
-
+.userInputButtonStocks{
+width: 100%;
+background-color: rgba(106, 106, 106, 0.258);
+color: #e6e6e6;
+padding: 15px 0;
+font-size: 18px;
+font-weight: 600;
+border-radius: 5px;
+cursor: pointer;
+}
 
 .selected{
 background-color: #ddd;
@@ -304,7 +309,7 @@ background-color: #ddd;
   display: none;
   position: absolute;
   text-align: left;
-  background-color: #f1f1f1;
+  background-color: #36393e;
   min-width: 15em;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -319,7 +324,7 @@ div[class^='testinputs-'] {
 /* Links inside the dropdown */
 div[class^='dropdown-subcontent-'] {
   text-align: left;
-  color: black;
+  color: #e6e6e6;
   text-decoration: none;
   display: block;
 }
@@ -329,7 +334,7 @@ div[class^='dropdown-subcontent-'] {
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
-input[class^='dropdown-checkbox']:checked ~ div[class^='testinputs-'] {display: block; }
+input[class^='dropdown-checkbox']:checked ~ div[class^='testinputs-'] {display: block;}
 
 /* Change the background color of the dropdown button when hovered over*/
 .dropdown:hover .dropbtn {background-color: #555e55;}
