@@ -304,6 +304,13 @@ background-color: #ddd;
   margin-right: 3em;
 }
 
+option{
+  color: black;
+}
+select{
+  color: black;
+}
+
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
