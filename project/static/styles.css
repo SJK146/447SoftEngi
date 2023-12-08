@@ -11,6 +11,10 @@
   color: #e6e6e6;
 }
 
+input{
+  color: black;
+}
+
 a:active {
 color: #e6e6e6;
 }
@@ -261,8 +265,11 @@ font-weight: 600;
 border-radius: 5px;
 cursor: pointer;
 }
+
 .userInputButtonStocks{
 width: 100%;
+left: 100px;
+position: absolute;
 background-color: rgba(106, 106, 106, 0.258);
 color: #e6e6e6;
 padding: 15px 0;
