@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, flash
+from flask import Flask, render_template, make_response, request, url_for, redirect, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import db, User, Study, Test, StudyTest
@@ -95,7 +95,7 @@ def studies():
 		names = []
 		studytests_list = []
 		studytest_query = sql.text("""
-				select 
+				select distinct
 					study.ticker AS ticker, 
 					test.name AS name, 
 					test.input_name_1 AS input_name_1, 
@@ -229,14 +229,9 @@ def get_studies():
 	
 	if len(studies): #if there are any studies selected
 		studytest_query = sql.text("""
-				select 
+				select distinct
 					study.ticker AS ticker, 
-					test.name AS name, 
-					test.input_name_1 AS input_name_1, 
-					test.input_name_2 AS input_name_2, 
-					test.input_name_3 AS input_name_3,
-					test.input_name_4 AS input_name_4,
-					study_test.study_id AS study_test_id,
+					test.name AS name,
 					study_test.input_1 AS input_1, 
 					study_test.input_2 AS input_2, 
 					study_test.input_3 AS input_3,
@@ -251,5 +246,15 @@ def get_studies():
 		studytests = db.session.execute(studytest_query).all()
 		print(studytests)
 		db.session.close()
-		return render_template('get_studies.html', studies=studies, studytests=studytests)
-	return render_template('studies.html', text="No Studies")
+		if request.args.get("mimetype") == "json":
+			studytests = [tuple(row) for row in studytests]
+			response = make_response(studytests, 200)
+			response.mimetype = "application/json"
+		else:
+			results = ""
+			for studytest in studytests:
+				results += str(studytest) + "\n"
+			response = make_response(results, 200)
+			response.mimetype = "text/plain"
+		return response
+	return "No Studies"
