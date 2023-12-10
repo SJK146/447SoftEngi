@@ -65,15 +65,22 @@ No Studies
 					{% if study.id == studytests[loop.index0].study_test_id %}
 					{% set test = studytests[loop.index0] %}
 					<tr><td>
-						{{ test.ticker }}, 
-						&lcub;TestType({{ test.name }}) 
-						{{ test.input_name_1|replace(' ', '') }}({{ test.input_1 }}) 
-						{{ test.input_name_2|replace(' ', '') }}({{ test.input_2 }})
-						{{ test.input_name_3|replace(' ', '') }}({{ test.input_3 }})
 						{% if test.input_name_4 %}
-							{{ test.input_name_4|replace(' ', '') }}({{ test.input_4 }})
+							{{ test.name }} {{ test.input_2 }} {{ test.input_3 }} over {{ test.input_4 }}
+							{% if test.input_1 == 'd' %} days
+							{% elif test.input_1 == 'w' %} weeks
+							{% elif test.input_1 == 'm' %} months
+							{% else  %} years
+							{% endif %}
+						{% else %}
+							{{ test.name }} {{ test.input_2 }} {{ test.input_3 }} 
+							{% if test.input_1 == 'd' %}daily
+							{% elif test.input_1 == 'w' %}weekly
+							{% elif test.input_1 == 'm' %}monthly
+							{% else  %}yearly
+							{% endif %}
 						{% endif %}
-						&rcub;</td></tr>
+						</td></tr>
 					{% endif %}
 				{% endfor %}
 			</table>
