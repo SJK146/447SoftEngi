@@ -56,6 +56,7 @@ def register():
 					password=generate_password_hash(new_password, method='scrypt'))
 		db.session.add(user)
 		db.session.commit()
+		db.session.close()
 		return redirect(url_for("login"))
 	return render_template("register.html")
 
@@ -71,6 +72,7 @@ def login():
 			flash("Bad login.  Try again.")
 			return redirect(url_for("studies"))
 		login_user(user)
+		db.session.close()
 		return redirect(url_for("studies"))
 	return render_template("login.html")
 
@@ -125,6 +127,7 @@ def studies():
 			chart = study.chart
 			names.append(name)
 			charts.append(chart)
+		db.session.close()
 		return render_template('studies.html', studies=studies, studytests=studytests, charts=charts, tickers=tickers, histories=histories, names=names, name=current_user.name)
 	return render_template('studies.html', text="No Studies")
 
@@ -219,8 +222,8 @@ def add_study():
 	return render_template('add_study.html', studies=studies, 
 						test_names=test_names, n_studies=n, tests=tests)
 
-#route for the main page that shows all a user's studygroups
-#it should be called /studygroups
+#
+#route for backend to get the studies
 @app.route("/get_studies")
 #@login_required - login not required - should have an api key instead
 def get_studies():
