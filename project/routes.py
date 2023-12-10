@@ -87,7 +87,7 @@ def logout():
 @app.route("/studies")
 @login_required
 def studies():
-	studies_query = sql.text("select id, ticker, chart from study")
+	studies_query = sql.text("select id, ticker, chart from study where user_id = {}".format(current_user.id))
 	studies = db.session.execute(studies_query).all()
 	
 	if len(studies): #there be studygroups ie studies ie things a user has chosen to study about a particular stock
@@ -128,7 +128,7 @@ def studies():
 			names.append(name)
 			charts.append(chart)
 		db.session.close()
-		return render_template('studies.html', studies=studies, studytests=studytests, charts=charts, tickers=tickers, histories=histories, names=names, name=current_user.name)
+		return render_template('studies.html', studies=studies, studytests=studytests, charts=charts, tickers=tickers, histories=histories, names=names, current_user_id=current_user.id, name=current_user.name)
 	return render_template('studies.html', text="No Studies")
 
 #
