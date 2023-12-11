@@ -137,19 +137,19 @@ def poly_macd(symbol, timespan):
 
 #validated
 #alpha_EMA("TSLA", "weekly", "10", "close")
-print()
+#print()
 #alpha_macdcext("TSLA", "daily", "open")
-print()
+#print()
 #validated
 #alpha_rsi("TSLA", "weekly", "10", "close")
-print()
+#print()
 #alpha_SMA("TSLA", "weekly", "10", "close")
-print()
+#print()
 #poly_macd("TSLA", "day")
 #alpha_bands("TSLA", "weekly", "10", "close")
-print()
+#print()
 #alpha_stoch("TSLA", "weekly")
-print()
+#print()
 
 
 #############################
