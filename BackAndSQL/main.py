@@ -6,7 +6,7 @@ from flask import Flask
 # from data_processor import run_data_processor
 # from api_handler import handle_api_requests
 from flask_sqlalchemy import SQLAlchemy
-from ../project/project.models import db, User, Study, Tests 
+from ..project/project.models import db, User, Study, Tests 
 
 #email stuff 
 import smtplib
@@ -19,7 +19,7 @@ import time
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = '../project/study_def.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'study_def.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'the_secret_key'
 
@@ -41,6 +41,8 @@ def run_data_processor():
     return study_data
 
 
+#Ticker, {TestType(String) TestInterval(Enum) TimePeriod(Int), comparisonBeingMade(Enum), valueForComparison(STR or Int)}, repeat for more tests
+
 def add_test_result(user_id, results_data):
     user = User.query.get(user_id)
     new_test = Tests(user=user, results=results_data)
@@ -50,9 +52,7 @@ def add_test_result(user_id, results_data):
 if __name__ == '__main__':
 
     study_data = run_data_processor()
-    for entry in study_data:
-        print(entry)
-
+    D1
     # handle_api_requests()
 
     target_time = datetime.time(7, 30)#7:30AM
@@ -97,7 +97,7 @@ def returnEmail(user_id):
 
 
 
-#python interface
+#python interface loqgkkmgewvxefoj
 
 
 def send_email(recipient_email):
