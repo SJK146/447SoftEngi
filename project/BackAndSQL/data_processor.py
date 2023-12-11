@@ -1,5 +1,5 @@
 # The data processor, called from main.py queries the Study Table in the database and parses it into a list to send to the api_handler
-from ....project.models import db, User, Study, Tests
+from ..project.models import db, User, Study, Tests
 
 
 def run_data_processor(db):

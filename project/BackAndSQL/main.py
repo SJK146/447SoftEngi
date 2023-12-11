@@ -1,13 +1,17 @@
 #TODO in main 
 
+import sys
 import API_Calls
 
 from flask import Flask
-# from data_processor import run_data_processor
+#from data_processor import run_data_processor
 # from api_handler import handle_api_requests
 from flask_sqlalchemy import SQLAlchemy
-from ..project/project.models import db, User, Study, Tests 
-
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+#from .. import models
+from ..models import db, Study 
+#from .. import models
 #email stuff 
 import smtplib
 import ssl
@@ -18,13 +22,38 @@ import datetime
 import time
 
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'study_def.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'the_secret_key'
+#app = Flask(__name__)
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'db.sqlite'
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#app.config['SECRET_KEY'] = 'the_secret_key'
 
-db.init_app(app)
+#db.init_app(app)
 
+
+def run_data_processor(session):
+    #studies = Study.query.all()
+    studies = session.query(Study).all()
+    #db.session.query(Study).all()
+
+    study_data = []
+    for item in studies:
+
+        study_data.append({
+            "id": item.id,
+            "user_id": item.user_id,
+            "ticker": item.ticker,
+            "studies": item.studies,
+        })
+
+    return study_data
+
+
+if __name__ == '__main__':
+    engine = create_engine("sqlite:///db.sqlite")
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    run_data_processor(session)
+    # handle_api_requests()
 
 def run_data_processor():
     studies = db.session.query(Study).all()
@@ -67,8 +96,16 @@ if __name__ == '__main__':
             break
         time.sleep(45)#sleeps for 45 seconds to put it within the exact minute to run 
     print(f"Starting db comparisons")
-    sleep(15)
+    time.sleep(15)
 
+    #get informaiton from bd, format into useful types 
+
+
+    #loop iterating through data list 
+        #check ticker and test, make call
+        #do comparision with return 
+        #notify if needed 
+    
 
 
 #SMA, EMA, RSI, MACDEXT, BBANDS, STOCH, MACD
