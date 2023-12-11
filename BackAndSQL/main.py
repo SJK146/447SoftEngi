@@ -52,9 +52,14 @@ def add_test_result(user_id, results_data):
 if __name__ == '__main__':
 
     study_data = run_data_processor()
-    D1
+    print(study_data)
     # handle_api_requests()
-
+    for item in studies:
+        ticker = item["ticker"]#or item[0] in the studies 
+        sendEmail = False
+            #for each study in item["studies"]
+    
+    
     target_time = datetime.time(7, 30)#7:30AM
     while True:
         current_time = datetime.datetime.now().time()
@@ -64,14 +69,6 @@ if __name__ == '__main__':
     print(f"Starting db comparisons")
     sleep(15)
 
-    #get informaiton from bd, format into useful types 
-
-
-    #loop iterating through data list 
-        #check ticker and test, make call
-        #do comparision with return 
-        #notify if needed 
-    
 
 
 #SMA, EMA, RSI, MACDEXT, BBANDS, STOCH, MACD
