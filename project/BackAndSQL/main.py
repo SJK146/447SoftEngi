@@ -1,5 +1,6 @@
 #TODO in main 
 
+import os
 import sys
 import API_Calls
 
@@ -7,11 +8,13 @@ from flask import Flask
 #from data_processor import run_data_processor
 # from api_handler import handle_api_requests
 from flask_sqlalchemy import SQLAlchemy
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-#from .. import models
-from ..models import db, Study 
-#from .. import models
+# Add the parent directory to the Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from models import Study
+
 #email stuff 
 import smtplib
 import ssl
@@ -49,7 +52,11 @@ def run_data_processor(session):
 
 
 if __name__ == '__main__':
-    engine = create_engine("sqlite:///db.sqlite")
+
+    # Create a database engine
+    engine = create_engine('sqlite:///../instance/db.sqlite')  # Adjust the URI based on your actual database location
+    
+    # Create a session to interact with the database
     Session = sessionmaker(bind=engine)
     session = Session()
     run_data_processor(session)
