@@ -97,14 +97,23 @@ if __name__ == '__main__':
             argue = match[2].split()
             compstr = argue[2]
             value = argue[0]
-
-            time_period = 10
+            time_period = -1
             series_type = "close"
-            interval = "weekly"
+
+            interval = "monthly"
+            if(argue[1].find("d")):
+                interval = "daily"
+            elif (argue[1].find("w")):
+                interval = "weekly"
             returnVale = -1
 
+            if(len(argue) == 5):#set time_period
+                temp = re.search(r'\((\d+)\)', argue[4])
+                time_period = int(temp.group(1))
+            else:
+                time_period = -1
+
             try:
-                value = "-1"
                 if value.find('SMA') != -1:
                     returnVale = API_Calls.alpha_SMA(ticker, interval, time_period, series_type)
                 elif value.find('EMA') != -1:
@@ -119,10 +128,9 @@ if __name__ == '__main__':
                     returnVale = API_Calls.alpha_stoch(ticker, interval)
                 elif value.find('MACD') != -1:
                     returnVale = API_Calls.alpha_macdcext(ticker, interval, series_type)
-                print(returnVale)
+                #print(returnVale)
                 # make comparison
                 match = re.search(r'ComparisonBeingMade\((&gt;|&lt;)\)', compstr)
-
                 valMatch = re.search(r'\((\d+)\)', argue[3])
                 compValue = int(valMatch.group(1))
                 if match.group(1) == '&gt;':#greater than
@@ -160,16 +168,5 @@ if __name__ == '__main__':
 #API_Calls.alpha_bands(symbol, interval, time_period, series_type)
 #API_Calls.alpha_stoch(symbol, interval)
 #API_Calls.poly_macd(symbol, timespan)
-
-
-def returnEmail(user_id):
-    study_instance = db.session.query(Study).get(user_id)
-    
-    if study_instance:
-        user_instance = db.session.query(User).get(study_instance.user_id)
-        if user_instance:
-            return user_instance.email
-
-    return None
 
 
