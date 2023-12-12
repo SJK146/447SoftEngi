@@ -35,11 +35,11 @@ import time
 
 
 #python interface loqgkkmgewvxefoj
-def send_email(recipient_email):
-    password = "WAAAAAAAAAABALLS"
+def send_email(recipient_email, messageStuff):
+    password = "loqgkkmgewvxefoj"
     sender = "softengprojemail@gmail.com"
     subject = "Stock Trigger Notification"
-    body = "Hello, your stock has hit its trigger!"
+    body = f"Hello, your stock has hit its trigger! {messageStuff}"
 
     em = EmailMessage()
     em["From"] = "softengprojemail@gmail.com"
@@ -83,6 +83,8 @@ import requests
 
 if __name__ == '__main__':
 
+    #send_email("shmittyk101@gmail.com",f"The stock {__name__} has met its specified Comparison value ")
+
     response = requests.get("http://127.0.0.1:5000/get_studies")
     if response.status_code == 200:
         # Parse the JSON data into a Python list
@@ -115,6 +117,7 @@ if __name__ == '__main__':
 
             try:
                 if value.find('SMA') != -1:
+                    print("SMA")
                     returnVale = API_Calls.alpha_SMA(ticker, interval, time_period, series_type)
                 elif value.find('EMA') != -1:
                     returnVale = API_Calls.alpha_EMA(ticker, interval, time_period, series_type)
@@ -128,7 +131,7 @@ if __name__ == '__main__':
                     returnVale = API_Calls.alpha_stoch(ticker, interval)
                 elif value.find('MACD') != -1:
                     returnVale = API_Calls.alpha_macdcext(ticker, interval, series_type)
-                #print(returnVale)
+                print(returnVale)
                 # make comparison
                 match = re.search(r'ComparisonBeingMade\((&gt;|&lt;)\)', compstr)
                 valMatch = re.search(r'\((\d+)\)', argue[3])
@@ -136,11 +139,11 @@ if __name__ == '__main__':
                 if match.group(1) == '&gt;':#greater than
                     if compValue < returnVale:
                         print(f"sending email{email}")
-                        send_email(email)
+                        send_email(email, f"The stock {ticker} has met its specified comparison value")
                 else:
                     if compValue < returnVale:
                         print(f"sending email{email}")
-                        send_email(email)
+                        send_email(email, f"The stock {ticker} has met its specified comparison value")
             except:
                 print("failed on user ticker")
 
