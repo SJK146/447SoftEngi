@@ -13,7 +13,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 # Add the parent directory to the Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from models import Study
+from models import Study, StudyTest
 
 #email stuff 
 import smtplib
@@ -35,16 +35,23 @@ import time
 
 def run_data_processor(session):
     #studies = Study.query.all()
-    studies = session.query(Study).all()
+    studies = session.query(StudyTest).all()
     #db.session.query(Study).all()
 
     study_data = []
     for item in studies:
         study_data.append({
             "id": item.id,
-            "user_id": item.user_id,
-            "ticker": item.ticker,
-            "studies": item.studies,
+            "name": item.name,
+            "study_id": item.study_id,
+            "test_id": item.test_id,
+            "input_1": item.input_1,
+            "input_1": item.input_2,
+            "input_1": item.input_3,
+            "input_1": item.input_4,
+            #"user_id": item.user_id,
+            #"ticker": item.ticker,
+            #"studies": item.studies,
         })
 
     return study_data
