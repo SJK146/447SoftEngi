@@ -1,5 +1,4 @@
 #Kyle
-#add  BBANDS, STOCH
 import requests
 import json
 
