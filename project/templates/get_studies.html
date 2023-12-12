@@ -1,5 +1,5 @@
 <pre>
     {% for studytest in studytests %}
-			{{ studytest.email }} {{ studytest.ticker }}, &lcub;TestType({{ studytest.name }}) {{ studytest.input_name_1|replace(' ', '') }}({{ studytest.input_1 }}) {{ studytest.input_name_2|replace(' ', '') }}({{ studytest.input_2 }}) {{ studytest.input_name_3|replace(' ', '') }}({{ studytest.input_3 }}){% if studytest.input_name_4 %} {{ studytest.input_name_4|replace(' ', '') }}({{ studytest.input_4 }}){% endif %}&rcub;
+			{{ studytest.email }} {{ studytest.ticker }}, {TestType({{ studytest.name }}) {{ studytest.input_name_1|replace(' ', '') }}({{ studytest.input_1 }}) {{ studytest.input_name_2|replace(' ', '') }}({{ studytest.input_2 }}) {{ studytest.input_name_3|replace(' ', '') }}({{ studytest.input_3 }}){% if studytest.input_name_4 %} {{ studytest.input_name_4|replace(' ', '') }}({{ studytest.input_4 }}){% endif %}}
 	{% endfor %}
 </pre>
