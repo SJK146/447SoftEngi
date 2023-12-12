@@ -233,6 +233,7 @@ def get_studies():
 	if len(studies): #if there are any studies selected
 		studytest_query = sql.text("""
 				select distinct
+					user.email AS email,
 					study.ticker AS ticker, 
 					test.name AS name,
 					test.input_name_1 AS input_name_1,
@@ -246,7 +247,8 @@ def get_studies():
 				from 
 					test, study_test, study, user 
 				where 
-					test.id=study_test.test_id 
+					user.id = study.user_id
+					and test.id=study_test.test_id 
 					and study_test.study_id = study.id 
 					and study_test.test_id = test.id
 				""")
