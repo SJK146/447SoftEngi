@@ -235,6 +235,10 @@ def get_studies():
 				select distinct
 					study.ticker AS ticker, 
 					test.name AS name,
+					test.input_name_1 AS input_name_1,
+					test.input_name_2 AS input_name_2,
+					test.input_name_3 AS input_name_3,
+					test.input_name_4 AS input_name_4,
 					study_test.input_1 AS input_1, 
 					study_test.input_2 AS input_2, 
 					study_test.input_3 AS input_3,
@@ -253,11 +257,13 @@ def get_studies():
 			studytests = [tuple(row) for row in studytests]
 			response = make_response(studytests, 200)
 			response.mimetype = "application/json"
+			return response
 		else:
-			results = ""
-			for studytest in studytests:
-				results += str(studytest) + "\n"
-			response = make_response(results, 200)
-			response.mimetype = "text/plain"
-		return response
+			return render_template('get_studies.html', studytests=studytests)
+			#results = ""
+			#for studytest in studytests:
+			#	results += str(studytest) + "\n"
+			#response = make_response(results, 200)
+			#response.mimetype = "text/plain"
+		#return response
 	return "No Studies"
