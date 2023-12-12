@@ -42,13 +42,22 @@
 
 {% block content %}
 {% if text %}
+<p class ="homeText">
+	this is where you will see your tracked stocks
+	<br>
+	click on the "Track a new stock" button below to start tracking stocks
+
+</p>
 No Studies
 <a href="/add_study">Track a new stock</a>
 {% else %}
     <h1>Welcome back {{ name }}!</h1>
 	<a href="/add_study">Track a new stock</a>
 	{% if not names %}
-	<div>You have no studies</div>
+	<div>
+		You have no studies
+
+	</div>
 	{% else %}
 	<div>
 		<div class = "table-header">Your tracked stocks:</div> <!--needs to be formatted better its whatever rn-->
@@ -91,8 +100,7 @@ No Studies
 			{% endfor %}
 		
 	</div>
-		
-	</div>
+
 	{% endif %}
 {% endif %}
 {% endblock %}
