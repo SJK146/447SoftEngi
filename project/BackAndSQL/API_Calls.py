@@ -2,7 +2,7 @@
 import requests
 import json
 
-alphaAPIKey = "FV940XIF9BKNU8P5"  
+alphaAPIKey = "SAF9JC6ZQOYQAVQV"
 
 #replace print with this to save information
 def record(data):
