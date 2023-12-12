@@ -251,6 +251,7 @@ def get_studies():
 					and test.id=study_test.test_id 
 					and study_test.study_id = study.id 
 					and study_test.test_id = test.id
+				order by email, ticker asc
 				""")
 		studytests = db.session.execute(studytest_query).all()
 		print(studytests)
